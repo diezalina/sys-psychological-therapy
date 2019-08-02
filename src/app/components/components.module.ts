@@ -7,6 +7,7 @@ import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { FormsModule } from '@angular/forms';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [HeaderComponent],
@@ -19,7 +20,9 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
-    })
-  ]
+    }),
+    RouterModule
+  ],
+  exports: [HeaderComponent]
 })
 export class ComponentsModule { }

@@ -14,17 +14,16 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { HeaderComponent } from './components/header/header.component';
 import {PsychologistModule} from './psychologist/psychologist.module';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {ToastrModule} from 'ngx-toastr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {ComponentsModule} from './components/components.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent,
-    HeaderComponent
+    CalendarComponent
   ],
   imports: [
     BrowserModule,
@@ -40,7 +39,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     }),
     ToastrModule.forRoot(),
     NgbModule,
-    PsychologistModule
+    PsychologistModule,
+    ComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

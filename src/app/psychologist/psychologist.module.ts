@@ -4,12 +4,14 @@ import { AddUserComponent } from './users/add-user/add-user.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { UserListComponent } from './users/user-list/user-list.component';
 import { UsersComponent } from './users/users/users.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [AddUserComponent, UserListComponent, UsersComponent],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [AddUserComponent, UserListComponent]
 })
