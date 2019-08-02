@@ -34,7 +34,16 @@ export class UserListComponent implements OnInit {
       });
   }
 
-  onEdit(usr: AdministrativeUsers) {}
+
+
+  onEdit(id, usr: AdministrativeUsers) {
+    this.usrServ.updateUser(id, usr)
+      .then(
+        res => {
+          this.router.navigate(['/users']);
+        }
+      );
+  }
 
   onDelete(id) {
     this.usrServ.deleteUser(id)

@@ -1,5 +1,6 @@
 <table class="table table-hover">
   <thead>
+    <th></th>
     <th>Nombre</th>
     <th>Email</th>
     <th>Rol</th>
@@ -8,6 +9,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let usr of users">
+      <!--- TODO: Agregar evento click para abrir el modal y editar --->
       <td>{{ usr.usrName }}</td>
       <td>{{ usr.usrEmail }}</td>
       <td *ngIf="usr.usrRole === 1">{{ roles[0].display }}</td>
@@ -17,3 +19,12 @@
     </tr>
   </tbody>
 </table>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title">Editar usuario</h4>
+    <button type="button" class="close" aria-label="Cerrar" (click)="modal.dismiss()"></button>
+  </div>
+  <div class="modal-body">
+  </div>
+</ng-template>

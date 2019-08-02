@@ -18,6 +18,7 @@ import { HeaderComponent } from './components/header/header.component';
 import {PsychologistModule} from './psychologist/psychologist.module';
 import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {ToastrModule} from 'ngx-toastr';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import {ToastrModule} from 'ngx-toastr';
       useFactory: adapterFactory
     }),
     ToastrModule.forRoot(),
+    NgbModule,
     PsychologistModule
   ],
   providers: [],
