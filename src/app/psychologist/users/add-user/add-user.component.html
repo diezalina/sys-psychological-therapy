@@ -1,32 +1,23 @@
-<h1>Add user</h1>
+
 <form class="create-form" [formGroup]="usrForm" (ngSubmit)="onSubmit(usrForm.value)">
   <div class="form-group">
-    <label>
-      Name
-      <input formControlName="name" class="form-control" placeholder="name">
-    </label>
+    <label for="nameInp">Nombre</label>
+    <input id="nameInp" formControlName="name" class="form-control" placeholder="Nombre completo">
   </div>
   <div class="form-group">
-    <label>
-      Email
-      <input formControlName="email" class="form-control" placeholder="Email">
-    </label>
+    <label for="emailInp">Email</label>
+    <input id="emailInp" formControlName="email" class="form-control" placeholder="Email">
   </div>
   <div class="form-group">
-    <label>
-      Password
-      <input formControlName="pwd" class="form-control" placeholder="Password" type="password">
-    </label>
+    <label for="pwdInp">Password</label>
+    <input id="pwdInp" formControlName="pwd" class="form-control" placeholder="Password" type="password">
   </div>
   <div class="form-group">
-    <label>
-      Role
-      <select class="form-control" formControlName="role">
-        <option value="1">Psychologist</option>
-        <option value="2">Secretary</option>
+    <label for="rolSlc">Rol</label>
+      <select id="rolSlc" class="form-control" formControlName="role">
+        <option *ngFor="let rol of roles" [value]="rol.val">{{ rol.display }}</option>
       </select>
-    </label>
   </div>
-  <button class="btn btn-lg btn-primary" type="submit">Create</button>
+  <button class="btn btn-lg btn-primary" type="submit">Guardar</button>
 </form>
 

@@ -1,0 +1,19 @@
+<table class="table table-hover">
+  <thead>
+    <th>Nombre</th>
+    <th>Email</th>
+    <th>Rol</th>
+    <th>Fecha inserción</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let usr of users">
+      <td>{{ usr.usrName }}</td>
+      <td>{{ usr.usrEmail }}</td>
+      <td *ngIf="usr.usrRole === 1">{{ roles[0].display }}</td>
+      <td *ngIf="usr.usrRole === 2">{{ roles[1].display }}</td>
+      <td>{{ usr.dateInsert }}</td>
+      <td><a class="btn text-danger" (click)="onDelete(usr.id)"><i class="fa fa-trash"></i></a></td>
+    </tr>
+  </tbody>
+</table>

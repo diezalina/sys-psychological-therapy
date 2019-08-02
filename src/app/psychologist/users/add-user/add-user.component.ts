@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {AdministrativeUsers} from '../../../models/users';
 import {UsersService} from '../../../services/users.service';
 import {Router} from '@angular/router';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-add-user',
@@ -12,11 +13,20 @@ import {Router} from '@angular/router';
 export class AddUserComponent implements OnInit {
 
   usrForm: FormGroup;
-  usrList: AdministrativeUsers[];
+  roles = [
+    {
+      val: 1,
+      display: 'Psicologo'
+    },
+    {
+      val: 2,
+      display: 'Secretaria'
+    }];
 
   constructor(public usrServ: UsersService,
               private fb: FormBuilder,
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
     this.createForm();
@@ -33,10 +43,10 @@ export class AddUserComponent implements OnInit {
 
   resetFields() {
     this.usrForm = this.fb.group({
-      name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
-      pwd: new FormControl('', Validators.required),
-      role: new FormControl('', Validators.required)
+      name: ['', [Validators.required]],
+      email: ['', Validators.required],
+      pwd: ['', Validators.required],
+      role: ['', Validators.required]
     });
   }
 
@@ -45,7 +55,8 @@ export class AddUserComponent implements OnInit {
       .then(
         res => {
           this.resetFields();
-          this.router.navigate(['users/add-user']);
+          this.toastr.success('Se añadió correctamente el usuario', 'Éxito');
+          this.router.navigate(['users']);
         }
       );
   }

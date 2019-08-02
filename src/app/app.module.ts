@@ -16,6 +16,8 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { HeaderComponent } from './components/header/header.component';
 import {PsychologistModule} from './psychologist/psychologist.module';
+import {AngularFontAwesomeModule} from 'angular-font-awesome';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -25,15 +27,17 @@ import {PsychologistModule} from './psychologist/psychologist.module';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
+    AngularFontAwesomeModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
+    ToastrModule.forRoot(),
     PsychologistModule
   ],
   providers: [],

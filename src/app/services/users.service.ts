@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {AdministrativeUsers} from '../models/users';
 
 @Injectable({
   providedIn: 'root'
@@ -25,5 +26,9 @@ export class UsersService {
       usrRole: parseInt(value.role),
       dateInsert: Date()
     });
+  }
+
+  updateUser(id, value) {
+    return this.db.collection('users').doc(id).set(value);
   }
 }
