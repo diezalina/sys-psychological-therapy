@@ -4,7 +4,7 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DateAdapter, CalendarModule } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
-import { FlatpickrModule } from 'angularx-flatpickr';
+import {FlatpickrDefaults, FlatpickrModule} from 'angularx-flatpickr';
 import { FormsModule } from '@angular/forms';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import {RouterModule} from '@angular/router';
@@ -15,6 +15,7 @@ import {RouterModule} from '@angular/router';
     CommonModule,
     FlatpickrModule,
     FormsModule,
+    FlatpickrModule.forRoot(),
     NgbModalModule,
     BrowserAnimationsModule,
     CalendarModule.forRoot({
@@ -23,6 +24,7 @@ import {RouterModule} from '@angular/router';
     }),
     RouterModule
   ],
+  providers: [FlatpickrDefaults],
   exports: [HeaderComponent]
 })
 export class ComponentsModule { }

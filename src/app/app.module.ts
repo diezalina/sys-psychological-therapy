@@ -8,7 +8,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from 'src/environments/environment';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { CalendarComponent } from './components/calendar/calendar.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -19,6 +19,7 @@ import {AngularFontAwesomeModule} from 'angular-font-awesome';
 import {ToastrModule} from 'ngx-toastr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ComponentsModule} from './components/components.module';
+import {FlatpickrDefaults, FlatpickrModule} from 'angularx-flatpickr';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import {ComponentsModule} from './components/components.module';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     ReactiveFormsModule,
+    FormsModule,
     AngularFontAwesomeModule,
     CalendarModule.forRoot({
       provide: DateAdapter,
@@ -40,9 +42,10 @@ import {ComponentsModule} from './components/components.module';
     ToastrModule.forRoot(),
     NgbModule,
     PsychologistModule,
-    ComponentsModule
+    ComponentsModule,
+    FlatpickrModule.forRoot()
   ],
-  providers: [],
+  providers: [FlatpickrDefaults],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
