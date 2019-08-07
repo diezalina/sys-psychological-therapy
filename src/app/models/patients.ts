@@ -132,7 +132,7 @@ export interface PatientsMentalExam {
     patientVisualContact: string;
     patientDressStyle: string;
     patientDressStyleCharacteristics: string;
-    paitentAccesories: string;
+    paitentAccessories: string;
     patientFacies: string;
     patientLanguage: string;
     patientTimeSpaceOrientation: string;
