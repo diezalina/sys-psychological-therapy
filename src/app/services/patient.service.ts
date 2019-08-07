@@ -28,8 +28,8 @@ export class PatientService {
   createPatient(patientData) {
     /**
      * Create patient's basic information
-     * @param Patient's data array
-     * @return server response
+     * @param Patient's data to add
+     * @return updated patient
      */
     return this.db.collection('patientUsers').add({
       patientName: patientData.name,
@@ -53,18 +53,87 @@ export class PatientService {
       patientInfoSource: patientData.infoSource,
       patientDescriptiveDiagnostic: patientData.descriptiveDiagnostic,
       patientPronostic: patientData.pronostic,
-      usrInsert: Date.now()
+      dateInsert: Date.now()
     });
   }
 
   updatePatient(id, patientData) {
     /**
      * Update patient's basic data
-     * @param patient basic info
-     * @return updated patient
+     * @param patient basic info & patient id
+     * @returns updated patient information
      */
     return this.db.collection('patientUsers').doc(id).set(patientData);
   }
 
+  addPatientConsultMotivation(id, consultMotivationData) {
+    /**
+     * Add patient's consult motivation
+     * @params Consult motivation from interview data and patient's id
+     * @returns Specific patients consult motivation
+     */
+    return this.db.collection('patientsConsultMotivation').add({
+      patientId: id,
+      patientConsultAssistanceMotive: consultMotivationData.assistanceMotive,
+      patientConsultPresentSymptoms: consultMotivationData.presentSymptoms,
+      patientConsultCurrentCondition: consultMotivationData.currentCondition,
+      patientConsultApproximateBeginning: consultMotivationData.approximateBeginning,
+      patientConsultManner: consultMotivationData.manner,
+      patientConsultCharacteristics: consultMotivationData.characteristics,
+      patientConsultUnchainedBy: consultMotivationData.unchainedBy,
+      patientConsultCoincidence: consultMotivationData.coincidence,
+      patientConsultConsequences: consultMotivationData.consequences,
+      patientConsultEvolution: consultMotivationData.evolution,
+      dateInsert: Date.now()
+    });
+  }
 
+  addPatientMultiaxisDiagnostic(id, multiaxisDiagnosticData) {
+    /**
+     * Add patient's multiaxial diagnostic
+     * @params Receives patients' id and multiaxial diagnostic data
+     * @returns Specific patient's multiaxial diagnostic
+     */
+    return this.db.collection('patientsMultiaxisDiagnostic').add({
+      patientId: id,
+      patientAxisOne: multiaxisDiagnosticData.axisOne,
+      patientAxisTwo: multiaxisDiagnosticData.axisTwo,
+      patientAxisThree: multiaxisDiagnosticData.axisThree,
+      patientAxisFour: multiaxisDiagnosticData.axisFour,
+      dateInsert: Date.now()
+    });
+  }
+
+  addPatientPathologicalHistory(id, pathologicalHistoryData) {
+    /**
+     * Add patient's pathological history
+     * @params Receive patients pathological history and patient id
+     * @returns Specific patient's pathological history
+     */
+    return this.db.collection('patientsPathologicalHistory').add({
+      patientId: id,
+      patientPreviousIllnesses: pathologicalHistoryData.previousIllnesses,
+      patientBrainTrauma: pathologicalHistoryData.brainTrauma,
+      patientLossOfKnowledgeDate: pathologicalHistoryData.lossOfKnowledgeDate,
+      patientLossOfKnowledgeDesc: pathologicalHistoryData.lossOfKnowledgeDesc,
+      patientSeizures: pathologicalHistoryData.seizures,
+      patientSeizuresCharacteristics: pathologicalHistoryData.seizuresCharacteristics,
+      patientSubstanceUse: pathologicalHistoryData.substanceUse,
+      patientAccidents: pathologicalHistoryData.accidents,
+      patientSurgeries: pathologicalHistoryData.surgeries,
+      dateInsert: Date.now()
+    });
+  }
+
+  // TODO: Finish add non pathological history
+  addPatientNonPathologicalHistory(id, nonPathologicalHistoryData) {
+    /**
+     * Add patient's non pathological history
+     * @params Receives specific patient's id and non pathological history
+     * @returns Specific patient's non pathological history
+     */
+    return this.db.collection('patientsNonPathologicalHistory').add({
+      patientId: id,
+    });
+  }
 }
