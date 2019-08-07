@@ -20,10 +20,10 @@ export interface Patients {
 export interface PatientMultiaxialDiagnostic {
     id?: string;
     patientId: string;
-    axisOne: string;
-    axisTwo: string;
-    axisThree: string;
-    axisFour: string;
+    patientAxisOne: string;
+    patientAxisTwo: string;
+    patientAxisThree: string;
+    patientAxisFour: string;
     usrInsert?: string;
     dateInsert?: Date;
     usrUpdate?: string;
@@ -34,7 +34,7 @@ export interface PatientTherapeuticPlan {
     id?: string;
     patientId: string;
     usrId: string;
-    therapeuticPlan: string;
+    patientTherapeuticPlan: string;
     usrInsert?: string;
     dateInsert?: Date;
     usrUpdate?: string;
@@ -44,8 +44,8 @@ export interface PatientTherapeuticPlan {
 export interface PatientsEvolution {
     id?: string;
     patientId: string;
-    sessionDate: Date;
-    sessionBitacora: string;
+    patientSessionDate: Date;
+    patientSessionBitacora: string;
     usrInsert?: string;
     dateInsert?: Date;
     usrUpdate?: string;
@@ -55,9 +55,9 @@ export interface PatientsEvolution {
 export interface PatientsPreviousTreatments {
     id?: string;
     patientId: string;
-    prescriptions: string;
-    prescriptionsReaction: string;
-    selfmedication: string;
+    patientPrescriptions: string;
+    patientPrescriptionsReaction: string;
+    patientSelfmedication: string;
     usrInsert?: string;
     dateInsert?: Date;
     usrUpdate?: string;
@@ -66,7 +66,7 @@ export interface PatientsPreviousTreatments {
 
 export interface PatientsFamilyRelations {
     id?: string;
-    familyDynamic: string;
+    patientFamilyDynamicId: string;
     familyAdjectiveId: FamilyAdjectives[];
     usrInsert?: string;
     dateInsert?: Date;
@@ -92,9 +92,9 @@ export interface PatientsFamilyDynamic {
 export interface PatientsDevelopmentHistory {
     id?: string;
     patientId: string;
-    pregnancy: string;
-    childbirth: string;
-    workHistory: string;
+    patientPregnancy: string;
+    patientChildbirth: string;
+    patientWorkHistory: string;
     usrInsert?: string;
     dateInsert?: Date;
     usrUpdate?: string;
@@ -103,9 +103,9 @@ export interface PatientsDevelopmentHistory {
 
 export interface PatientsSignificativeEvents {
     id?: string;
-    developmentHistoryId: string;
+    patientDevelopmentHistoryId: string;
     significativeEventId: string;
-    significativeEventDesc: string;
+    patientSignificativeEventDesc: string;
     usrInsert?: string;
     dateInsert?: Date;
     usrUpdate?: string;
@@ -124,20 +124,20 @@ export interface SignificativeEventsTypes {
 export interface PatientsMentalExam {
     id?: string;
     patientId: string;
-    appearance: string;
-    disposition: string;
-    motorBehavior: string;
-    motion: string;
-    greeting: string;
-    visualContact: string;
-    dressStyle: string;
-    dressStyleCharacteristics: string;
-    accesories: string;
-    facies: string;
-    language: string;
-    timeSpaceOrientation: string;
-    senperceptualAlteration: string;
-    coordination: string;
+    patientAppearance: string;
+    patientDisposition: string;
+    patientMotorBehavior: string;
+    patientMotion: string;
+    patientGreeting: string;
+    patientVisualContact: string;
+    patientDressStyle: string;
+    patientDressStyleCharacteristics: string;
+    paitentAccesories: string;
+    patientFacies: string;
+    patientLanguage: string;
+    patientTimeSpaceOrientation: string;
+    patinetSenperceptualAlteration: string;
+    patientCoordination: string;
     usrInsert?: string;
     dateInsert?: Date;
     usrUpdate?: string;
@@ -165,16 +165,16 @@ export interface PatientsPathologicalHistory {
 export interface PatientsConsultMotivation {
     id?: string;
     patientId: string;
-    assitanceMotive: string;
-    presentSymptoms: string;
-    currentCondition: string;
-    approximateBeginning: Date;
-    manner: string;
-    characteristics: string;
-    unchainedBy: string;
-    coincidence: string;
-    consequences: string;
-    evolution: string;
+    patientAssitanceMotive: string;
+    patientPresentSymptoms: string;
+    patientCurrentCondition: string;
+    patientApproximateBeginning: Date;
+    patientManner: string;
+    patientCharacteristics: string;
+    patientUnchainedBy: string;
+    patientCoincidence: string;
+    patientConsequences: string;
+    patientEvolution: string;
     usrInsert?: string;
     dateInsert?: Date;
     usrUpdate?: string;

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {AdministrativeUsers} from '../models/users';
 
 @Injectable({
   providedIn: 'root'
@@ -10,14 +9,28 @@ export class UsersService {
   constructor(public db: AngularFirestore) { }
 
   getUsers() {
+    /**
+     * Get all administrative users from database
+     * @return all admin. users from database
+     */
     return this.db.collection('administrativeUsers').snapshotChanges();
   }
 
   deleteUser(id) {
+    /**
+     * Delete admin user from database
+     * @param Admin user id: string
+     * @return Updated user list
+     */
     return this.db.collection('administrativeUsers').doc(id).delete();
   }
 
   createUser(value) {
+    /**
+     * Create admin user
+     * @param User's data array
+     * @return Successful operation
+     */
     return this.db.collection('administrativeUsers').add({
       usrName: value.name,
       usrEmail: value.email,
@@ -29,6 +42,11 @@ export class UsersService {
   }
 
   updateUser(id, value) {
-    return this.db.collection('users').doc(id).set(value);
+    /**
+     * Update admin user
+     * @param Receive data to update
+     * @return Updated user
+     */
+    return this.db.collection('administrativeUsers').doc(id).set(value);
   }
 }
