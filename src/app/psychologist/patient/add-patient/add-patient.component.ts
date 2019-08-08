@@ -1,142 +1,75 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,  FormGroup, Validators} from '@angular/forms';
-import {PatientService} from '../../../services/patient.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
-  selector: 'app-add-patient',
-  templateUrl: './add-patient.component.html',
-  styleUrls: ['./add-patient.component.css']
+  selector: 'app-add-user',
+  templateUrl: './add-user.component.html',
+  styleUrls: ['./add-user.component.css']
 })
-export class AddPatientComponent implements OnInit {
+export class AddUserComponent implements OnInit {
 
-  patientForm: FormGroup;
-  sexos = [
+  usrForm: FormGroup;
+  authError: any;
+  roles = [
     {
       val: 1,
-      display: 'Femenino'
+      display: 'Psicologo'
     },
     {
       val: 2,
-      display: 'Masculino'
-    }];
-  civils = [
-    {
-      val: 1,
-      display: 'Soltero'
-    },
-    {
-      val: 2,
-      display: 'Casado'
-    },
-    {
-      val: 3,
-      display: 'Divorciado'
-    },
-    {
-      val: 4,
-      display: 'Viudo'
-    }];
-  ses = [
-    {
-      val: 1,
-      display: 'Alto'
-    },
-    {
-      val: 2,
-      display: 'Medio'
-    },
-    {
-      val: 3,
-      display: 'Alto'
-    }];
-  scholaritys = [
-    {
-      val: 1,
-      display: 'Primaria'
-    },
-    {
-      val: 2,
-      display: 'Secundaria'
-    },
-    {
-      val: 3,
-      display: 'Preparatoria'
-    },
-    {
-      val: 4,
-      display: 'Licenciatura'
+      display: 'Secretaria'
     }];
 
-  constructor(public patientServ: PatientService,
+  constructor(private authServ: AuthService,
               private fb: FormBuilder,
               private router: Router,
               private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.authServ.eventAuthError$.subscribe(data => {
+      this.authError = data;
+    });
     this.createForm();
   }
 
   createForm() {
-    this.patientForm = this.fb.group({
+    this.usrForm = this.fb.group({
+      name: ['', Validators.required],
       email: ['', Validators.required],
       pwd: ['', Validators.required],
-      name: ['', Validators.required],
-      age: ['', Validators.required],
-      sexo: ['', Validators.required],
-      civil: ['', Validators.required],
-      birthdate: ['', Validators.required],
-      hometown: ['', Validators.required],
-      address: ['', Validators.required],
-      homephone: ['', Validators.required],
-      cellphone: ['', Validators.required],
-      ocupation: ['', Validators.required],
-      scholarity: ['', Validators.required],
-      se: ['', Validators.required],
-      religion: ['', Validators.required],
-      reference: ['', Validators.required],
-      guardian: ['', Validators.required],
-      source: ['', Validators.required],
-      diagnostic: ['', Validators.required],
-      pronostic: ['', Validators.required]
+      role: ['', Validators.required]
     });
   }
 
   resetFields() {
-    this.patientForm = this.fb.group({
+    this.usrForm = this.fb.group({
+      name: ['', [Validators.required]],
       email: ['', Validators.required],
       pwd: ['', Validators.required],
-      name: ['', Validators.required],
-      age: ['', Validators.required],
-      sexo: ['', Validators.required],
-      civil: ['', Validators.required],
-      birthdate: ['', Validators.required],
-      hometown: ['', Validators.required],
-      address: ['', Validators.required],
-      homephone: ['', Validators.required],
-      cellphone: ['', Validators.required],
-      ocupation: ['', Validators.required],
-      scholarity: ['', Validators.required],
-      se: ['', Validators.required],
-      religion: ['', Validators.required],
-      reference: ['', Validators.required],
-      guardian: ['', Validators.required],
-      source: ['', Validators.required],
-      diagnostic: ['', Validators.required],
-      pronostic: ['', Validators.required]
+      role: ['', Validators.required]
     });
   }
 
   onSubmit(value) {
-    this.patientServ.createPatient(value)
-      .then(
-        res => {
-          this.resetFields();
-          this.toastr.success('Se añadió correctamente el usuario', 'Éxito');
-          this.router.navigate(['users']);
-        }
-      );
+    this.authServ.createAdminUser(value).then(res => {
+      if (res === true) {
+        this.onStatus('', res);
+      } else {
+        this.onStatus(this.authError.message, false);
+      }
+    });
+    this.resetFields();
   }
+
+  onStatus(message, val: boolean) {
+    if (val === true) {
+      this.toastr.success('Se agregó el usuario con éxito', 'Éxito');
+    } else {
+      this.toastr.error(message, 'Ha ocurrido un error');
+    }
+  }
+
 }
