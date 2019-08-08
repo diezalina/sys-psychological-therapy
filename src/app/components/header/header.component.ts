@@ -15,6 +15,10 @@ export class HeaderComponent implements OnInit {
     {
       path: '/users',
       name: 'Usuarios'
+    },
+    {
+      path: '/patient',
+      name: 'Pacientes'
     }
   ];
   constructor() { }
