@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
-import {PatientService} from '../../../services/patient.service';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-info-patient',
@@ -90,9 +90,161 @@ export class InfoPatientComponent implements OnInit {
       val: 2,
       display: 'Sedentario'
     }];
-  // consultForm opciones
+// mentalForm opciones
+  aspectos = [
+    {
+      val: 1,
+      display: 'aliño'
+    },
+    {
+      val: 2,
+      display: 'bueno'
+    },
+    {
+      val: 3,
+      display: 'regular'
+    },
+    {
+      val: 4,
+      display: 'malo'
+    }];
+  disposiciones = [
+    {
+      val: 1,
+      display: 'buena'
+    },
+    {
+      val: 2,
+      display: 'mala'
+    }];
+  conductas = [
+    {
+      val: 1,
+      display: 'normal'
+    },
+    {
+      val: 2,
+      display: 'anormal'
+    },
+    {
+      val: 3,
+      display: 'disminuida'
+    },
+    {
+      val: 4,
+      display: 'aumentada'
+    },
+    {
+      val: 5,
+      display: 'congruente'
+    },
+    {
+      val: 6,
+      display: 'incongruente'
+    }];
+  saludos = [
+    {
+      val: 1,
+      display: 'cordial'
+    },
+    {
+      val: 2,
+      display: 'agresivo'
+    },
+    {
+      val: 3,
+      display: 'tenso'
+    },
+    {
+      val: 4,
+      display: 'respetuoso'
+    },
+    {
+      val: 5,
+      display: 'ausente'
+    },
+    {
+      val: 6,
+      display: 'sincero'
+    },
+    {
+      val: 7,
+      display: 'obligado'
+    }];
+  contactos = [
+    {
+      val: 1,
+      display: 'adecuado'
+    },
+    {
+      val: 2,
+      display: 'inadecuado'
+    },
+    {
+      val: 3,
+      display: 'evasivo'
+    },
+    {
+      val: 4,
+      display: 'retador'
+    },
+    {
+      val: 5,
+      display: 'fijo'
+    },
+    {
+      val: 6,
+      display: 'variable'
+    }];
+  vestimentas = [
+    {
+      val: 1,
+      display: 'adecuado'
+    },
+    {
+      val: 2,
+      display: 'inadecuado'
+    }];
+  accesorios = [
+    {
+      val: 1,
+      display: 'ausentes'
+    },
+    {
+      val: 2,
+      display: 'escasos'
+    },
+    {
+      val: 3,
+      display: 'excesivos'
+    },
+    {
+      val: 4,
+      display: 'adecuados'
+    },
+    {
+      val: 5,
+      display: 'inadecuados'
+    }];
+  facies = [
+    {
+      val: 1,
+      display: 'depresiva'
+    },
+    {
+      val: 2,
+      display: 'ansiosa'
+    },
+    {
+      val: 3,
+      display: 'inexpresiva'
+    },
+    {
+      val: 4,
+      display: 'neurológica'
+    }];
 
-  constructor(public patientServ: PatientService,
+  constructor(private authServ: AuthService,
               private fb: FormBuilder,
               private router: Router,
               private toastr: ToastrService) { }
@@ -149,8 +301,8 @@ export class InfoPatientComponent implements OnInit {
       id: ['', Validators.required],
       disorder: ['', Validators.required],
       disorderRelation: ['', Validators.required],
-      chronical: ['', Validators.required],
-      chronicalRelation: ['', Validators.required],
+      chronic: ['', Validators.required],
+      chronicRelation: ['', Validators.required],
     });
     this.treatmentsForm = this.fb.group({
       id: ['', Validators.required],
@@ -172,7 +324,7 @@ export class InfoPatientComponent implements OnInit {
       greeting: ['', Validators.required],
       visualContact: ['', Validators.required],
       dress: ['', Validators.required],
-      dessDesc: ['', Validators.required],
+      dressDesc: ['', Validators.required],
       accessories: ['', Validators.required],
       facies: ['', Validators.required],
       language: ['', Validators.required],
@@ -195,6 +347,13 @@ export class InfoPatientComponent implements OnInit {
     this.familyDynamicForm = this.fb.group({
       id: ['', Validators.required],
       familyDesc: ['', Validators.required],
+    });
+  }
+
+
+  onSubmit(value) {
+    // TODO: Toastr response through auth serv
+    this.authServ.createAdminUser(value).then(res => {
     });
   }
 }
