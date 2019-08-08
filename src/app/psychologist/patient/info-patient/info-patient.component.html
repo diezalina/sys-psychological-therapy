@@ -1,0 +1,265 @@
+<div class="container">
+  <ngb-accordion>
+    <ngb-panel title="Motivos de Consulta" >
+      <ng-template ngbPanelContent style="color: #2F96B4">
+        <form class="create-form" [formGroup]="consultForm" (ngSubmit)="onSubmit(consultForm.value)">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="motivoSlc"> Acude de manera </label>
+                <select id="motivoSlc" class="form-control" formControlName="consultMotive">
+                  <option *ngFor="let consultMotive of consultMotives" [value]="consultMotive.val">{{ consultMotive.display }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                  <label for="symptomsInp">Por presentar</label>
+                  <input id="symptomsInp" formControlName="consultSymptoms" class="form-control" placeholder="Evento">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="currentInp">Padecimiento Actual</label>
+                <input id="currentInp" formControlName="consultCondition" class="form-control" placeholder="Padecimientos actuales">
+              </div>
+            </div>
+          </div>
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="fechaInp"> Iniciando el día: </label>
+                  <input id="fechaInp" formControlName="consultBeginning" class="form-control" placeholder="Fecha">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="maneraSlc">De manera</label>
+                  <select id="maneraSlc" class="form-control" formControlName="consultMotive">
+                    <option *ngFor="let consultManner of consultManners" [value]="consultManner.val">{{ consultManner.display }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="caracteristicasInp">De Característica</label>
+                  <input id="caracteristicasInp" formControlName="consultCharacteristics" class="form-control" placeholder="Características">
+                </div>
+              </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="unchainedInp"> Desencadenado Por: </label>
+                <input id="unchainedInp" formControlName="consultUnchained" class="form-control" placeholder="Evento">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <div class="form-group">
+                  <label for="coincidenceInp"> Coincidiendo Con : </label>
+                  <input id="coincidenceInp" formControlName="consultCoincidence" class="form-control" placeholder="Evento">
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="consecuenciasInp"> Ocacionando </label>
+                <input id="consecuenciasInp" formControlName="consultConsequences" class="form-control" placeholder="Características">
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="evolucionInp"> Evolución </label>
+            <input id="evolucionInp" formControlName="consultEvolution" class="form-control" placeholder="Características">
+          </div>
+        </form>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+
+  <ngb-accordion>
+    <ngb-panel title="Diagnóstico Multiaxial">
+      <ng-template ngbPanelContent>
+        <form class="create-form" [formGroup]="multiaxisForm" (ngSubmit)="onSubmit(multiaxisForm.value)">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="axis1Slc"> Eje 1 </label>
+                <input id="axis1Slc" class="form-control" formControlName="axisOne" placeholder="Transtornos mentales y del comportamiento">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="axis2Slc"> Eje II </label>
+                <input id="axis2Slc" class="form-control" formControlName="axisTwo" placeholder="Transtornos de personalidad">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="axis3Slc"> Eje III </label>
+                <input id="axis3Slc" class="form-control" formControlName="axisThree" placeholder="Enfermedades médicas">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="axis4Slc"> Eje IV </label>
+                <input id="axis4Slc" class="form-control" formControlName="axisFour" placeholder="Problemas psicosociales">
+              </div>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+  <ngb-accordion>
+    <ngb-panel title="Historial patológico personal" >
+      <ng-template ngbPanelContent style="color: #2F96B4">
+        <form class="create-form" [formGroup]="pathologicalForm" (ngSubmit)="onSubmit(pathologicalForm.value)">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="enfermedadesInp">Enfermedades Previas </label>
+                <input id="enfermedadesInp" formControlName="illnesses" class="form-control" placeholder="Descripción">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="brainInp">Traumas Craneoencefálicos</label>
+                <input id="brainInp" formControlName="brain" class="form-control" placeholder="Evento">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="perdidaDateInp">Perdida del conocimiento</label>
+                <input id="perdidaDateInp" formControlName="knowledgeDate" class="form-control" placeholder="Fecha">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="perdidaInp">Perdida del conocimiento</label>
+                <input id="perdidaInp" formControlName="knowledgeDesc" class="form-control" placeholder="Descripcion">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="convulcionesInp"> Crisis convulsitivas </label>
+                <input id="convulcionesInp" formControlName="seizures" class="form-control" placeholder="Fecha">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="convulcionesDescInp"> Crisis convulsitivas </label>
+                <input id="convulcionesDescInp" formControlName="seizuresDesc" class="form-control" placeholder="Descripcion">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="sustanciasInp">Uso de Sustancias</label>
+                <input id="sustanciasInp" formControlName="substance" class="form-control" placeholder="Nombres">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="accidenteInp"> Accidentes </label>
+                <input id="accidenteInp" formControlName="accidents" class="form-control" placeholder="Evento">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <div class="form-group">
+                  <label for="surgeriesInp"> Cirugías </label>
+                  <input id="surgeriesInp" formControlName="surgeries" class="form-control" placeholder="Características">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+  <ngb-accordion>
+    <ngb-panel title="Antedecentes personales no patológicos" >
+      <ng-template ngbPanelContent style="color: #2F96B4">
+        <form class="create-form" [formGroup]="nonPathologicalForm" (ngSubmit)="onSubmit(nonPathologicalForm.value)">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="alimentacionSlc"> Alimentación </label>
+                <select id="alimentacionSlc" class="form-control" formControlName="nourishment">
+                  <option *ngFor="let nourishmentType of nourishmentTypes" [value]="nourishmentType.val">{{nourishmentType.display }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="hygieneInp">Hábitos higiénicos</label>
+                <input id="hygieneInp" formControlName="hygiene" class="form-control" placeholder="Características">
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="form-group">
+                <label for="sleepingInp"> Hábitos de sueño </label>
+                <input id="sleepingInp" formControlName="sleeping" class="form-control" placeholder="Características">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="familyInp">Desempeño familiar </label>
+                <input id="familyInp" formControlName="family" class="form-control" placeholder="Relación y dinámica familiar">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="socialInp">Desempeño social</label>
+                <input id="socialInp" formControlName="social" class="form-control" placeholder="Relaciones interpersonales">
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="moodInp"> Estado de ánimo habitual </label>
+                <input id="moodInp" formControlName="mood" class="form-control" placeholder="Descripción">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="stressSlc">Niveles de estrés</label>
+                <select id="stressSlc" class="form-control" formControlName="stress">
+                  <option *ngFor="let stresLevel of stressLevels" [value]="stresLevel.val">{{ stresLevel.display }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="vidaSlc">Tipo de vida</label>
+                <select id="vidaSlc" class="form-control" formControlName="life">
+                  <option *ngFor="let lifeType of lifeTypes" [value]="lifeType.val">{{ lifeType.display }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="form-group">
+                  <label for="timeInp"> Manejo del tiempo libre </label>
+                  <input id="timeInp" formControlName="time" class="form-control" placeholder="Características">
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+</div>
