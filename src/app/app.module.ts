@@ -20,17 +20,21 @@ import {ToastrModule} from 'ngx-toastr';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {ComponentsModule} from './components/components.module';
 import {FlatpickrDefaults, FlatpickrModule} from 'angularx-flatpickr';
+import {AngularFireAuthModule} from '@angular/fire/auth';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CalendarComponent
+    CalendarComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
     AngularFirestoreModule,
     ReactiveFormsModule,
     FormsModule,

@@ -1,0 +1,15 @@
+
+<div class="col-md-5">
+  <form [formGroup]="loginFrm" (ngSubmit)="login(loginFrm.value)">
+    <div class="form-group">
+      <label for="emailInp">Email</label>
+      <input id="emailInp" formControlName="email" class="form-control" placeholder="Email">
+    </div>
+    <div class="form-group">
+      <label for="pwdInp">Password</label>
+      <input id="pwdInp" formControlName="pwd" class="form-control" placeholder="Password" type="password">
+    </div>
+    <button class="btn btn-lg btn-primary" type="submit">Iniciar sesión</button>
+  </form>
+</div>
+

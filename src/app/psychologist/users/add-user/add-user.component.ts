@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder,  FormGroup, Validators} from '@angular/forms';
-import {UsersService} from '../../../services/users.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {AuthService} from '../../../services/auth.service';
 
 @Component({
   selector: 'app-add-user',
@@ -12,6 +12,7 @@ import {ToastrService} from 'ngx-toastr';
 export class AddUserComponent implements OnInit {
 
   usrForm: FormGroup;
+  authError: any;
   roles = [
     {
       val: 1,
@@ -22,12 +23,15 @@ export class AddUserComponent implements OnInit {
       display: 'Secretaria'
     }];
 
-  constructor(public usrServ: UsersService,
+  constructor(private authServ: AuthService,
               private fb: FormBuilder,
               private router: Router,
               private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.authServ.eventAuthError$.subscribe(data => {
+      this.authError = data;
+    });
     this.createForm();
   }
 
@@ -50,14 +54,16 @@ export class AddUserComponent implements OnInit {
   }
 
   onSubmit(value) {
-    this.usrServ.createUser(value)
-      .then(
-        res => {
-          this.resetFields();
-          this.toastr.success('Se añadió correctamente el usuario', 'Éxito');
-          this.router.navigate(['users']);
-        }
-      );
+    this.authServ.createAdminUser(value);
+    this.resetFields();
+  }
+
+  onStatus(message, val: boolean) {
+    if (val === true) {
+      this.toastr.success('Se agregó el usuario con éxito', 'Éxito');
+    } else {
+      this.toastr.error(message, 'Ha ocurrido un error');
+    }
   }
 
 }

@@ -25,38 +25,6 @@ export class PatientService {
     return this.db.collection('patientUsers').doc(id).delete();
   }
 
-  createPatient(patientData) {
-    /**
-     * Create patient's basic information
-     * @param Patient's data to add
-     * @return updated patient
-     */
-    return this.db.collection('patientUsers').add({
-      patientName: patientData.name,
-      // tslint:disable-next-line:radix
-      patientAge: parseInt(patientData.age),
-      // tslint:disable-next-line:radix
-      patientSex: parseInt(patientData.sex),
-      // tslint:disable-next-line:radix
-      civilState: parseInt(patientData.civilState),
-      patientBirthdate: patientData.birthdate,
-      patientHometown: patientData.hometown,
-      patientAddress: patientData.address,
-      patientHomephone: patientData.homephone,
-      patientCellphone: patientData.cellphone,
-      patientOccupation: patientData.occupation,
-      patientScholarity: patientData.scholarity,
-      patientSEStatus: patientData.SEStatus, // Patient socioeconomic status
-      patientReligion: patientData.religion,
-      patientReference: patientData.reference,
-      patientLegalGuardian: patientData.legalGuardian,
-      patientInfoSource: patientData.infoSource,
-      patientDescriptiveDiagnostic: patientData.descriptiveDiagnostic,
-      patientPronostic: patientData.pronostic,
-      dateInsert: Date.now()
-    });
-  }
-
   updatePatient(id, patientData) {
     /**
      * Update patient's basic data

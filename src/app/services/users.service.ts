@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {passBoolean} from 'protractor/built/util';
+import {AngularFireAuth} from '@angular/fire/auth';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -25,28 +28,12 @@ export class UsersService {
     return this.db.collection('administrativeUsers').doc(id).delete();
   }
 
-  createUser(value) {
-    /**
-     * Create admin user
-     * @param User's data array
-     * @return Successful operation
-     */
-    return this.db.collection('administrativeUsers').add({
-      usrName: value.name,
-      usrEmail: value.email,
-      usrPwd: value.pwd,
-      // tslint:disable-next-line:radix
-      usrRole: parseInt(value.role),
-      dateInsert: Date()
-    });
-  }
-
   updateUser(id, value) {
     /**
      * Update admin user
      * @param Receive data to update
      * @return Updated user
      */
-    return this.db.collection('administrativeUsers').doc(id).set(value);
+    return this.db.collection('administrativeUsers/').doc(id).set(value);
   }
 }

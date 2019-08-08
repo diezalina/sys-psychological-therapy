@@ -1,12 +1,12 @@
 export interface Tests {
-    patientTests: patientTests;
-    appliedTests: appliedTests[];
-    psychTests: psychTests[];
-    questionsPsychTests: questionsPsychTests[];
-    automatedTestsResult: automatedTestsResult[];
+    patientTests: PatientTests;
+    appliedTests: AppliedTests[];
+    psychTests: PsychTests[];
+    questionsPsychTests: QuestionsPsychTests[];
+    automatedTestsResult: AutomatedTestsResult[];
 }
 
-export interface patientTests {
+export interface PatientTests {
     id?: string;
     patientId: string;
     superiorMentalHF: string;
@@ -20,7 +20,7 @@ export interface patientTests {
     dateUpdate?: Date;
 }
 
-export interface appliedTests {
+export interface AppliedTests {
     id?: string;
     psychTestId: string;
     patientId: string;
@@ -32,7 +32,7 @@ export interface appliedTests {
     dateUpdate?: Date;
 }
 
-export interface psychTests {
+export interface PsychTests {
     id?: string;
     name: string;
     description: string;
@@ -42,7 +42,7 @@ export interface psychTests {
     dateUpdate?: Date;
 }
 
-export interface questionsPsychTests {
+export interface QuestionsPsychTests {
     id?: string;
     psychTestId: string;
     name: string;
@@ -52,7 +52,7 @@ export interface questionsPsychTests {
     dateUpdate?: Date;
 }
 
-export interface automatedTestsResult {
+export interface AutomatedTestsResult {
     id?: string;
     psychTestId: string;
     patientId: string;

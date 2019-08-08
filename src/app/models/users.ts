@@ -1,8 +1,15 @@
+export interface Roles {
+  reader: boolean;
+  psicologo?: boolean;
+  paciente?: boolean;
+  secretaria?: boolean;
+}
+
 export interface AdministrativeUsers {
     id?: string;
+    uid: string;
     usrName: string;
     usrEmail: string;
-    usrPwd: string;
     usrRole: number;
     usrInsert?: string;
     dateInsert?: Date;
@@ -12,9 +19,9 @@ export interface AdministrativeUsers {
 
 export interface PatientUser {
     id?: string;
+    uid: string;
     patientName: string;
     patientEmail: string;
-    patientPwd: string;
     patientAge: number;
     patientSex: number;
     civilState: number;
