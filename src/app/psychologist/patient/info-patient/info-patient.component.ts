@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../../../services/auth.service';
+import {BehaviorSubject} from 'rxjs';
 
 @Component({
   selector: 'app-info-patient',
@@ -21,6 +22,7 @@ export class InfoPatientComponent implements OnInit {
   developmentForm: FormGroup;
   eventForm: FormGroup;
   familyDynamicForm: FormGroup;
+  patientId: any;
 
 // consultForm opciones
   consultMotives = [
@@ -250,6 +252,10 @@ export class InfoPatientComponent implements OnInit {
               private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.authServ.patientId$.subscribe(res => {
+      this.patientId = res;
+    });
+    console.log(this.patientId);
     this.createForm();
   }
   createForm() {

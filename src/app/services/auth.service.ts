@@ -4,7 +4,6 @@ import {BehaviorSubject} from 'rxjs';
 import * as firebase from 'firebase/app';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
-import {ToastrService} from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -16,11 +15,12 @@ export class AuthService {
   private eventAuthError = new BehaviorSubject<string>('');
   eventAuthError$ = this.eventAuthError.asObservable();
   private value: boolean;
+  private patientId = new BehaviorSubject<string>('');
+  patientId$ = this.patientId.asObservable();
 
   constructor(private db: AngularFirestore,
               private afAuth: AngularFireAuth,
-              private router: Router,
-              public toastr: ToastrService) { }
+              private router: Router) { }
 
   createAdminUser(user) {
     return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pwd)
@@ -51,7 +51,7 @@ export class AuthService {
         });
         this.insertPatient(patientCredential)
           .then(() => {
-            this.router.navigate(['/patients']);
+            this.patientId.next(patientCredential.user.uid);
           });
       })
       .then(res => {
@@ -82,8 +82,8 @@ export class AuthService {
      * @param Patient's data to add
      * @return updated patient
      */
-    // Use set instead of add to set ID
     return this.db.doc(`patientUsers/${patientCredential.user.uid}`).set({
+      patientEmail: this.patientUsr.email,
       patientName: this.patientUsr.name,
       // tslint:disable-next-line:radix
       patientAge: parseInt(this.patientUsr.age),

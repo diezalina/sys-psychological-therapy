@@ -81,6 +81,8 @@ export class AddPatientComponent implements OnInit {
 
   createForm() {
     this.patientForm = this.fb.group({
+      email: ['', Validators.required],
+      pwd: ['', Validators.required],
       name: ['', Validators.required],
       age: ['', Validators.required],
       sexo: ['', Validators.required],
@@ -104,6 +106,8 @@ export class AddPatientComponent implements OnInit {
 
   resetFields() {
     this.patientForm = this.fb.group({
+      email: ['', Validators.required],
+      pwd: ['', Validators.required],
       name: ['', Validators.required],
       age: ['', Validators.required],
       sexo: ['', Validators.required],
