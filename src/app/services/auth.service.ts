@@ -30,9 +30,12 @@ export class AuthService {
           displayName: user.name
         });
         this.insertAdminUsr(usrCredential)
-          .then(res => {
-            return res;
+          .then(() => {
+            this.router.navigate(['/users']);
           });
+      })
+      .then(res => {
+        return true;
       })
       .catch(err => {
         this.eventAuthError.next(err);
@@ -40,7 +43,7 @@ export class AuthService {
   }
 
   createPatientUser(user) {
-    this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pwd)
+    return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pwd)
       .then(patientCredential => {
         this.patientUsr = user;
         patientCredential.user.updateProfile({
@@ -50,6 +53,9 @@ export class AuthService {
           .then(() => {
             this.router.navigate(['/patients']);
           });
+      })
+      .then(res => {
+        return true;
       })
       .catch(err => {
         this.eventAuthError.next(err);
