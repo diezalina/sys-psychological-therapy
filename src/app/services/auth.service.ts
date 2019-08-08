@@ -15,6 +15,7 @@ export class AuthService {
   patientUsr: any;
   private eventAuthError = new BehaviorSubject<string>('');
   eventAuthError$ = this.eventAuthError.asObservable();
+  private value: boolean;
 
   constructor(private db: AngularFirestore,
               private afAuth: AngularFireAuth,
@@ -22,7 +23,7 @@ export class AuthService {
               public toastr: ToastrService) { }
 
   createAdminUser(user) {
-    this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pwd)
+    return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pwd)
       .then(usrCredential => {
         this.adminUsr = user;
         usrCredential.user.updateProfile({
@@ -32,6 +33,7 @@ export class AuthService {
           .then(() => {
             this.router.navigate(['/users']);
           });
+        return this.value = true;
       })
       .catch(err => {
         this.eventAuthError.next(err);

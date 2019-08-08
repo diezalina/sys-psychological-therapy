@@ -54,7 +54,9 @@ export class AddUserComponent implements OnInit {
   }
 
   onSubmit(value) {
-    this.authServ.createAdminUser(value);
+    // TODO: Toastr response through auth serv
+    this.authServ.createAdminUser(value).then(res => {
+    });
     this.resetFields();
   }
 
