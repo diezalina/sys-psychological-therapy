@@ -9,9 +9,17 @@ import { AddPatientComponent } from './patient/add-patient/add-patient.component
 import { PatientListComponent } from './patient/patient-list/patient-list.component';
 import { PatientComponent } from './patient/patient/patient.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { InfoPatientComponent } from './patient/info-patient/info-patient.component';
 
-@NgModule({
-  declarations: [AddUserComponent, UserListComponent, UsersComponent, AddPatientComponent, PatientListComponent, PatientComponent],
+@NgModule(
+  {declarations: [
+    AddUserComponent,
+    UserListComponent,
+    UsersComponent,
+    AddPatientComponent,
+    PatientListComponent,
+    PatientComponent,
+    InfoPatientComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
