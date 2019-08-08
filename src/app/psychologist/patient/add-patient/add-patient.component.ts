@@ -4,6 +4,7 @@ import {PatientService} from '../../../services/patient.service';
 import {AuthService} from '../../../services/auth.service';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
+import {AuthService} from '../../../services/auth.service';
 
 
 @Component({
@@ -14,6 +15,7 @@ import {ToastrService} from 'ngx-toastr';
 export class AddPatientComponent implements OnInit {
 
   patientForm: FormGroup;
+  authError: any;
   sexos = [
     {
       val: 1,
@@ -77,6 +79,9 @@ export class AddPatientComponent implements OnInit {
               private toastr: ToastrService) { }
 
   ngOnInit() {
+    this.authServ.eventAuthError$.subscribe(data => {
+      this.authError = data;
+    });
     this.createForm();
   }
 
@@ -127,14 +132,5 @@ export class AddPatientComponent implements OnInit {
   }
 
   onSubmit(value) {
-    /* this.patientServ.createPatient(value)
-      .then(
-        res => {
-          this.resetFields();
-          this.toastr.success('Se añadió correctamente el usuario', 'Éxito');
-          this.router.navigate(['users']);
-        }
-      ); */
-  }
-
+}
 }

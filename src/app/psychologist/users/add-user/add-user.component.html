@@ -1,3 +1,8 @@
+<div class="row" *ngIf="authError">
+  <div class="col-12 alert alert-danger">
+    {{ authError?.message }}
+  </div>
+</div>
 
 <form class="create-form" [formGroup]="usrForm" (ngSubmit)="onSubmit(usrForm.value)">
   <div class="form-group">

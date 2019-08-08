@@ -33,7 +33,9 @@ export class AuthService {
           .then(() => {
             this.router.navigate(['/users']);
           });
-        return this.value = true;
+      })
+      .then(res => {
+        return true;
       })
       .catch(err => {
         this.eventAuthError.next(err);
@@ -41,7 +43,7 @@ export class AuthService {
   }
 
   createPatientUser(user) {
-    this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pwd)
+    return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pwd)
       .then(patientCredential => {
         this.patientUsr = user;
         patientCredential.user.updateProfile({
@@ -49,8 +51,11 @@ export class AuthService {
         });
         this.insertPatient(patientCredential)
           .then(() => {
-            this.router.navigate(['/patients'])
+            this.router.navigate(['/patients']);
           });
+      })
+      .then(res => {
+        return true;
       })
       .catch(err => {
         this.eventAuthError.next(err);
