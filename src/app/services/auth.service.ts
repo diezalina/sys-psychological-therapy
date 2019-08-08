@@ -84,6 +84,7 @@ export class AuthService {
      */
     // Use set instead of add to set ID
     return this.db.doc(`patientUsers/${patientCredential.user.uid}`).set({
+      patientEmail: this.patientUsr.email,
       patientName: this.patientUsr.name,
       // tslint:disable-next-line:radix
       patientAge: parseInt(this.patientUsr.age),
