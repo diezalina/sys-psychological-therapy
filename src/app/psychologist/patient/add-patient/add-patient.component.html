@@ -1,0 +1,139 @@
+<div class="container">
+  <h2>Alta de pacientes</h2>
+  <div class="jumbotron">
+  <form class="create-form" [formGroup]="patientForm" (ngSubmit)="onSubmit(patientForm.value)">
+    <div class="form-group">
+      <label for="nameInp">Nombre</label>
+      <input id="nameInp" formControlName="name" class="form-control" placeholder="Nombre completo">
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="birthInp">Fecha de nacimiento</label>
+          <input id="birthInp" formControlName="birthdate" class="form-control" placeholder="Nacimiento">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="civilSlc"> Estado Civil</label>
+          <select id="civilSlc" class="form-control" formControlName="civil">
+            <option *ngFor="let civil of civils" [value]="civil.val">{{ civil.display }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="direccionInp">Dirección</label>
+          <input id="direccionInp" formControlName="address" class="form-control" placeholder="Direccion">
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="form-group">
+          <label for="homeInp">Lugar de nacimiento</label>
+          <input id="homeInp" formControlName="hometown" class="form-control" placeholder="Ciudad">
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="cellInp">Celular</label>
+          <input id="cellInp" formControlName="cellphone" class="form-control" placeholder="Teléfono">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="phoneInp">Teléfono</label>
+          <input id="phoneInp" formControlName="homephone" class="form-control" placeholder="Teléfono">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="ageInp">Edad</label>
+          <input id="ageInp" formControlName="age" class="form-control" placeholder="Edad">
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-group">
+          <label for="sexSlc">Sexo</label>
+          <select id="sexSlc" class="form-control" formControlName="sexo">
+            <option *ngFor="let sexo of sexos" [value]="sexo.val">{{ sexo.display }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="ocupationInp">Ocupación</label>
+          <input id="ocupationInp" formControlName="ocupation" class="form-control" placeholder="Ocupación">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="schoolSlc"> Escolaridad máxima alcanzada </label>
+          <select id="schoolSlc" class="form-control" formControlName="scholarity">
+            <option *ngFor="let scholarity of scholaritys" [value]="scholarity.val">{{ scholarity.display }}</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="seSlc"> Socioeconómico </label>
+          <select id="seSlc" class="form-control" formControlName="se">
+            <option *ngFor="let se of ses" [value]="se.val">{{ se.display }}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="religionInp">Religión</label>
+          <input id="religionInp" formControlName="religion" class="form-control" placeholder="Religión">
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+       <label for="referenciaInp">Institución que lo refiere</label>
+       <input id="referenciaInp" formControlName="reference" class="form-control" placeholder="Nombre de la institución">
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="guardianInp">Guardian Legal</label>
+          <input id="guardianInp" formControlName="guardian" class="form-control" placeholder="Nombre">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="fuenteInp">Fuente de Información</label>
+          <input id="fuenteInp" formControlName="source" class="form-control" placeholder="Fuente que proporciona la información">
+        </div>
+      </div>
+    </div>
+
+
+    <div class="form-group">
+      <label for="diagnosticoInp">Diagnóstico</label>
+      <input id="diagnosticoInp" formControlName="diagnostic" class="form-control" placeholder="Diagnóstico">
+    </div>
+
+    <div class="form-group">
+      <label for="pronosticoInp">Pronóstico</label>
+      <input id="pronosticoInp" formControlName="pronostic" class="form-control" placeholder="Pronóstico">
+    </div>
+  </form>
+</div>
+  <button class="btn btn-primary"  type="submit">Registrar</button>
+</div>
+
