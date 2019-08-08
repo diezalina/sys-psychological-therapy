@@ -30,10 +30,9 @@ export class AuthService {
           displayName: user.name
         });
         this.insertAdminUsr(usrCredential)
-          .then(() => {
-            this.router.navigate(['/users']);
+          .then(res => {
+            return res;
           });
-        return this.value = true;
       })
       .catch(err => {
         this.eventAuthError.next(err);
@@ -49,7 +48,7 @@ export class AuthService {
         });
         this.insertPatient(patientCredential)
           .then(() => {
-            this.router.navigate(['/patients'])
+            this.router.navigate(['/patients']);
           });
       })
       .catch(err => {

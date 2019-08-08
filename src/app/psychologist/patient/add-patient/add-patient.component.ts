@@ -126,13 +126,13 @@ export class AddPatientComponent implements OnInit {
   }
 
   onSubmit(value) {
-    this.patientServ.createPatient(value)
+    /* this.patientServ.createPatient(value)
       .then(
         res => {
           this.resetFields();
           this.toastr.success('Se añadió correctamente el usuario', 'Éxito');
           this.router.navigate(['users']);
         }
-      );
+      ); */
   }
 }
