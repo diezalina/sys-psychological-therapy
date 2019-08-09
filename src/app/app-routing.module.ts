@@ -4,6 +4,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import {UsersComponent} from './psychologist/users/users/users.component';
 import {PatientComponent} from './psychologist/patient/patient/patient.component';
 import {LoginComponent} from './auth/login/login.component';
+import {InfoPatientComponent} from './psychologist/patient/info-patient/info-patient.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'info-patient',
+    component: InfoPatientComponent
   },
   {
     path: '**',

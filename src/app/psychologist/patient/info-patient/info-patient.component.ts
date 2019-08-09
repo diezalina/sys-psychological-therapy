@@ -3,7 +3,7 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../../../services/auth.service';
-import {BehaviorSubject} from 'rxjs';
+import {UsersService} from '../../../services/users.service';
 import {PatientService} from '../../../services/patient.service';
 
 @Component({
@@ -360,12 +360,125 @@ export class InfoPatientComponent implements OnInit {
       familyDesc: ['', Validators.required],
     });
   }
-
+  resetFields() {
+    this.consultForm = this.fb.group({
+        id: ['', Validators.required],
+        consultMotive: ['', Validators.required],
+        consultSymptoms: ['', Validators.required],
+        consultCondition: ['', Validators.required],
+        consultBeginning: ['', Validators.required],
+        consultManner: ['', Validators.required],
+        consultCharacteristics: ['', Validators.required],
+        consultUnchained: ['', Validators.required],
+        consultCoincidence: ['', Validators.required],
+        consultConsequences: ['', Validators.required],
+        consultEvolution: ['', Validators.required],
+        dateInsert: ['', Validators.required]
+      });
+    this.multiaxisForm = this.fb.group({
+      id: ['', Validators.required],
+      axisOne: ['', Validators.required],
+      axisTwo: ['', Validators.required],
+      axisThree: ['', Validators.required],
+      axisFour: ['', Validators.required],
+      dateInsert: ['', Validators.required]
+    });
+    this.pathologicalForm = this.fb.group({
+      id: ['', Validators.required],
+      illnesses: ['', Validators.required],
+      brain: ['', Validators.required],
+      knowledgeDate: ['', Validators.required],
+      knowledgeDesc: ['', Validators.required],
+      seizures: ['', Validators.required],
+      seizuresDesc: ['', Validators.required],
+      substance: ['', Validators.required],
+      accidents: ['', Validators.required],
+      surgeries: ['', Validators.required],
+      dateInsert: ['', Validators.required]
+    });
+    this.nonPathologicalForm = this.fb.group({
+      id: ['', Validators.required],
+      nourishment: ['', Validators.required],
+      family: ['', Validators.required],
+      social: ['', Validators.required],
+      mood: ['', Validators.required],
+      stress: ['', Validators.required],
+      hygiene: ['', Validators.required],
+      life: ['', Validators.required],
+      sleeping: ['', Validators.required],
+      time: ['', Validators.required],
+    });
+    this.familyForm = this.fb.group({
+      id: ['', Validators.required],
+      disorder: ['', Validators.required],
+      disorderRelation: ['', Validators.required],
+      chronic: ['', Validators.required],
+      chronicRelation: ['', Validators.required],
+    });
+    this.treatmentsForm = this.fb.group({
+      id: ['', Validators.required],
+      prescriptions: ['', Validators.required],
+      reaction: ['', Validators.required],
+      selfmedication: ['', Validators.required],
+    });
+    this.evolutionForm = this.fb.group({
+      id: ['', Validators.required],
+      date: ['', Validators.required],
+      bitacora: ['', Validators.required],
+    });
+    this.mentalForm = this.fb.group({
+      id: ['', Validators.required],
+      appearance: ['', Validators.required],
+      dispotition: ['', Validators.required],
+      motor: ['', Validators.required],
+      motion: ['', Validators.required],
+      greeting: ['', Validators.required],
+      visualContact: ['', Validators.required],
+      dress: ['', Validators.required],
+      dressDesc: ['', Validators.required],
+      accessories: ['', Validators.required],
+      facies: ['', Validators.required],
+      language: ['', Validators.required],
+      orientation: ['', Validators.required],
+      senperceptual: ['', Validators.required],
+      coordination: ['', Validators.required],
+    });
+    this.developmentForm = this.fb.group({
+      id: ['', Validators.required],
+      pregnancy: ['', Validators.required],
+      childbirth: ['', Validators.required],
+      work: ['', Validators.required],
+    });
+    this.eventForm = this.fb.group({
+      id: ['', Validators.required],
+      developmentId: ['', Validators.required],
+      significativeEvent: ['', Validators.required],
+      eventDescription: ['', Validators.required],
+    });
+    this.familyDynamicForm = this.fb.group({
+      id: ['', Validators.required],
+      familyDesc: ['', Validators.required],
+    });
+    }
 
   onSubmit(value) {
-    // TODO: Toastr response through auth serv
-    this.authServ.createAdminUser(value).then(res => {
+    this.authServ.createPatientUser(value).then(res => {
+      if (res === true) {
+        this.patientId = this.authServ.patientId;
+        this.patientServ.patientId.next(this.patientId);
+        this.onStatus('', res);
+      } else {
+      }
     });
+    this.resetFields();
+  }
+
+  onStatus(message, val: boolean) {
+    if (val === true) {
+      this.toastr.success('Se agregó correctamente la imformación del paciente', 'Éxito');
+    } else {
+      this.toastr.error(message, 'Ha ocurrido un error');
+    }
   }
 }
 

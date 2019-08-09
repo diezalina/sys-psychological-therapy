@@ -3,6 +3,7 @@
   <th>Nombre</th>
   <th>Edad</th>
   <th>Correo</th>
+  <th>Agregar Info</th>
   </thead>
   <tbody>
   <tr *ngFor="let usr of users">
@@ -10,7 +11,8 @@
     <td>{{ usr.patientName }}</td>
     <td>{{ usr.patientAge }}</td>
     <td>{{ usr.patientEmail }}</td>
-
+    <td><a class="btn text-primary" href="info-patient">Agregar</a></td>
+    <td> </td>
   </tr>
   </tbody>
 </table>
