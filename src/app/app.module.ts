@@ -49,6 +49,7 @@ import {PatientModule} from './patient/patient.module';
     ToastrModule.forRoot(),
     NgbModule,
     PsychologistModule,
+    PatientModule,
     ComponentsModule,
     PatientModule,
     FlatpickrModule.forRoot()
