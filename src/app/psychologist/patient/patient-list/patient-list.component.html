@@ -1,11 +1,16 @@
 <table class="table table-hover">
   <thead>
   <th>Nombre</th>
+  <th>Edad</th>
+  <th>Correo</th>
   </thead>
   <tbody>
   <tr *ngFor="let usr of users">
     <!--- TODO: Agregar evento click para abrir el modal y editar --->
     <td>{{ usr.patientName }}</td>
+    <td>{{ usr.patientAge }}</td>
+    <td>{{ usr.patientEmail }}</td>
+
   </tr>
   </tbody>
 </table>

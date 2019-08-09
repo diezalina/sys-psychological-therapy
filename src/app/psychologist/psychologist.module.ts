@@ -11,6 +11,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { InfoPatientComponent } from './patient/info-patient/info-patient.component';
 import {AddPatientComponent} from './patient/add-patient/add-patient.component';
 import {MatInputModule} from '@angular/material';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 @NgModule(
   {declarations: [
@@ -24,6 +25,7 @@ import {MatInputModule} from '@angular/material';
   imports: [
     CommonModule,
     MatInputModule,
+    MatExpansionModule,
     ReactiveFormsModule,
     RouterModule,
     NgbModule
