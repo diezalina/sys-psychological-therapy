@@ -5,6 +5,7 @@ import {UsersComponent} from './psychologist/users/users/users.component';
 import {PatientComponent} from './psychologist/patient/patient/patient.component';
 import {LoginComponent} from './auth/login/login.component';
 import {InfoPatientComponent} from './psychologist/patient/info-patient/info-patient.component';
+import {NotasComponent} from './patient/notas/notas.component';
 
 const routes: Routes = [
   {

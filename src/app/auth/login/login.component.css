@@ -8,3 +8,15 @@
 #button{
   align-content: center;
 }
+
+#circulo{
+  position: absolute;
+  margin-right: 45%;
+  width: 150px;
+  height: 150px;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background: #5cb85c;
+  flex: auto;
+}

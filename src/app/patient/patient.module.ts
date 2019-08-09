@@ -7,7 +7,7 @@ import { NotasComponent } from './notas/notas.component';
   declarations: [NotasComponent],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
   ]
 })
 export class PatientModule { }

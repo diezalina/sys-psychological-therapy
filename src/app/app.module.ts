@@ -22,12 +22,13 @@ import {ComponentsModule} from './components/components.module';
 import {FlatpickrDefaults, FlatpickrModule} from 'angularx-flatpickr';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import { LoginComponent } from './auth/login/login.component';
+import {PatientComponent} from './psychologist/patient/patient/patient.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CalendarComponent,
-    LoginComponent
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
