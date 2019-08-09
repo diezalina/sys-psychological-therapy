@@ -43,7 +43,7 @@ export class PatientService {
      * @returns Specific patients consult motivation
      */
     return this.db.collection('patientsConsultMotivation').add({
-      patientId: id,
+      patientId: 'patientUsers/' + id,
       patientConsultAssistanceMotive: consultMotivationData.consultMotive,
       patientConsultPresentSymptoms: consultMotivationData.consultSymptoms,
       patientConsultCurrentCondition: consultMotivationData.consultCondition,
@@ -65,7 +65,7 @@ export class PatientService {
      * @returns Specific patient's multiaxial diagnostic
      */
     return this.db.collection('patientsMultiaxisDiagnostic').add({
-      patientId: id,
+      patientId: 'patientUsers/' + id,
       patientAxisOne: multiaxisDiagnosticData.axisOne,
       patientAxisTwo: multiaxisDiagnosticData.axisTwo,
       patientAxisThree: multiaxisDiagnosticData.axisThree,
@@ -81,7 +81,7 @@ export class PatientService {
      * @returns Specific patient's pathological history
      */
     return this.db.collection('patientsPathologicalHistory').add({
-      patientId: id,
+      patientId: 'patientUsers/' + id,
       patientPreviousIllnesses: pathologicalHistoryData.illnesses,
       patientBrainTrauma: pathologicalHistoryData.brain,
       patientLossOfKnowledgeDate: pathologicalHistoryData.knowledgeDate,
@@ -102,7 +102,7 @@ export class PatientService {
      * @returns Specific patient's non pathological history
      */
     return this.db.collection('patientsNonPathologicalHistory').add({
-      patientId: id,
+      patientId: 'patientUsers/' + id,
       // tslint:disable-next-line:radix
       patientNourishment: parseInt(nonPathologicalHistoryData.nourishment),
       patientFamilyPerformance: nonPathologicalHistoryData.family,
@@ -125,7 +125,7 @@ export class PatientService {
      * @returns specific patient's family history
      */
     return this.db.collection('patientsFamilyHistory').add({
-      patientId: id,
+      patientId: 'patientUsers/' + id,
       patientRelativeBehaviorDisorder: familyHistoryData.disorder,
       patientRelativeBDRelation: familyHistoryData.disorderRelation,
       patientRelativeChronicConditions: familyHistoryData.chronic,
@@ -141,7 +141,7 @@ export class PatientService {
      * @returns Specific patient's previous treatments
      */
     return this.db.collection('patientsPreviousTreatments').add({
-      patientId: id,
+      patientId: 'patientUsers/' + id,
       patientPrescriptions: previousTreatmentsData.prescriptions,
       patientPrescriptionReaction: previousTreatmentsData.reaction,
       patientSelfmedication: previousTreatmentsData.selfmedication,
@@ -156,7 +156,7 @@ export class PatientService {
      * @returns specific patient's evolution
      */
     return this.db.collection('patientsEvolution').add({
-      patientId: id,
+      patientId: 'patientUsers/' + id,
       patientSessionDate: evolutionData.date,
       patientSessionBitacora: evolutionData.bitacora,
       dateInsert: Date.now()
@@ -170,7 +170,7 @@ export class PatientService {
      * @returns specific patient's mental exam
      */
     return this.db.collection('patientsMentalExam').add({
-      patientId: id,
+      patientId: 'patientUsers/' + id,
       patientAppearance: mentalExamData.appearance,
       patientDisposition: mentalExamData.dispotition,
       patientMotorBehavior: mentalExamData.motor,
@@ -196,7 +196,7 @@ export class PatientService {
      * @returns patient's development history
      */
     return this.db.collection('patientsDevelopmentHistory').add({
-      patientId: id,
+      patientId: 'patientUsers/' + id,
       patientPregnancy: devHistoryData.pregnancy,
       patientChildbirth: devHistoryData.childbirth,
       patientWorkHistory: devHistoryData.work,
@@ -211,7 +211,7 @@ export class PatientService {
      * @returns specific patient's significative events
      */
     return this.db.collection('patientsSignificativeEvents').add({
-      patientId: id,
+      patientId: 'patientUsers/' + id,
       patientDevelopmentHistoryId: devHistoryId,
       signifivativeEventTypeId: sEventTypeId,
       patientSignificativeEventsDesc: significativeEventsData.eventDesc,
@@ -239,7 +239,7 @@ export class PatientService {
      * @returns specific patient's family dynamic
      */
     return this.db.collection('patientsFamilyDynamic').add({
-      patientId: id,
+      patientId: 'patientUsers/' + id,
       patientFamilyDesc: familyDynamicData.description,
       dateInsert: Date.now()
     });
