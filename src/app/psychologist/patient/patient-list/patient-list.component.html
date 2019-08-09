@@ -11,7 +11,7 @@
     <td>{{ usr.patientName }}</td>
     <td>{{ usr.patientAge }}</td>
     <td>{{ usr.patientEmail }}</td>
-    <td><a class="btn text-primary" href="info-patient">Agregar</a></td>
+    <td><button class="btn text-primary" (click)="setId(usr.id)">Agregar</button></td>
     <td> </td>
   </tr>
   </tbody>

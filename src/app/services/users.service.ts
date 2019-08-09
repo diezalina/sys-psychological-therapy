@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {passBoolean} from 'protractor/built/util';
-import {AngularFireAuth} from '@angular/fire/auth';
-import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'

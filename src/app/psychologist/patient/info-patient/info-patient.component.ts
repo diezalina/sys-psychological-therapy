@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
@@ -24,6 +24,7 @@ export class InfoPatientComponent implements OnInit {
   eventForm: FormGroup;
   familyDynamicForm: FormGroup;
   patientId: string;
+
 
 // consultForm opciones
   consultMotives = [
@@ -254,12 +255,12 @@ export class InfoPatientComponent implements OnInit {
               private patientServ: PatientService) { }
 
   ngOnInit() {
-    this.patientServ.patientId.subscribe(res => {
-      this.patientId = this.patientServ.patientId.getValue();
+    this.patientServ.currentId.subscribe(res => {
+      this.patientId = res;
     });
-    console.log(this.patientId);
     this.createForm();
   }
+
   createForm() {
     this.consultForm = this.fb.group({
       id: ['', Validators.required],

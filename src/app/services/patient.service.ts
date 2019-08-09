@@ -8,8 +8,13 @@ import {AngularFireList} from '@angular/fire/database';
 })
 export class PatientService {
 
-  patientId = new BehaviorSubject<string>('');
+  private patientId = new BehaviorSubject<string>('');
+  currentId = this.patientId.asObservable();
   constructor(public db: AngularFirestore) { }
+
+  changeId(id: string) {
+    this.patientId.next(id);
+  }
 
   getPatients() {
     /**
@@ -43,8 +48,8 @@ export class PatientService {
      * @params Consult motivation from interview data and patient's id
      * @returns Specific patients consult motivation
      */
-    return this.db.collection('patientsConsultMotivation').add({
-      patientId: this.db.collection('patientUsers').doc(id),
+    const data =  {
+      patientId: 'patientUsers/' + id,
       patientConsultAssistanceMotive: consultMotivationData.consultMotive,
       patientConsultPresentSymptoms: consultMotivationData.consultSymptoms,
       patientConsultCurrentCondition: consultMotivationData.consultCondition,
@@ -54,9 +59,10 @@ export class PatientService {
       patientConsultUnchainedBy: consultMotivationData.consultUnchained,
       patientConsultCoincidence: consultMotivationData.consultCoincidence,
       patientConsultConsequences: consultMotivationData.consultConsequences,
-      patientConsultEvolution: consultMotivationData.consultEvolution,
-      dateInsert: Date.now()
-    });
+      patientConsultEvolution: consultMotivationData.consultEvolution
+    };
+    console.log(data);
+    return this.db.collection('patientsConsultMotivation').add(data);
   }
 
   addPatientMultiaxisDiagnostic(id, multiaxisDiagnosticData) {

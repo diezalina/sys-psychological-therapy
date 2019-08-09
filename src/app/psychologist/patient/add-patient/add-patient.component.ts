@@ -140,7 +140,7 @@ export class AddPatientComponent implements OnInit {
     this.authServ.createPatientUser(value).then(res => {
       if (res === true) {
         this.patientId = this.authServ.patientId;
-        this.patientServ.patientId.next(this.patientId);
+        this.patientServ.changeId(this.patientId);
         this.onStatus('', res);
       } else {
         this.onStatus(this.authError.message, false);

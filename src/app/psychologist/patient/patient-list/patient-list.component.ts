@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {PatientUser} from '../../../models/users';
 import {PatientService} from '../../../services/patient.service';
 import {Router} from '@angular/router';
@@ -10,8 +10,15 @@ import {Router} from '@angular/router';
 })
 export class PatientListComponent implements OnInit {
   users: PatientUser[];
+  @Output() pIdEvent = new EventEmitter<string>();
 
   constructor(public patientServ: PatientService, private router: Router) { }
+
+  setId(id) {
+    this.patientServ.changeId(id);
+    this.router.navigate(['/info-patient']);
+    console.log(id);
+  }
 
   ngOnInit() {
     this.patientServ.getPatients()

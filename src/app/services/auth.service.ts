@@ -49,7 +49,7 @@ export class AuthService {
         usrCredential.user.updateProfile({
           displayName: user.name
         });
-        this.patientId = usrCredential.user.uid;
+        // this.patientId = usrCredential.user.uid;
         this.insertPatient(usrCredential)
           .then(() => {
             // this.patientId = usrCredential.user.uid;
