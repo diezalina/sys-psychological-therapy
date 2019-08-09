@@ -71,7 +71,7 @@ export class PatientService {
      * @params Receives patients' id and multiaxial diagnostic data
      * @returns Specific patient's multiaxial diagnostic
      */
-    return this.db.collection('patientsMultiaxisDiagnostic').add({
+    return this.db.collection('patientsMultiaxialDiagnostic').add({
       patientId: 'patientUsers/' + id,
       patientAxisOne: multiaxisDiagnosticData.axisOne,
       patientAxisTwo: multiaxisDiagnosticData.axisTwo,
