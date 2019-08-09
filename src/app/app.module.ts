@@ -29,8 +29,7 @@ import {NotasComponent} from './patient/notas/notas.component';
   declarations: [
     AppComponent,
     CalendarComponent,
-    LoginComponent,
-    NotasComponent
+    LoginComponent
   ],
   imports: [
     BrowserModule,
