@@ -461,11 +461,43 @@ export class InfoPatientComponent implements OnInit {
     });
     }
 
-  onSubmit(value) {
+  onSubmitConsultMotivation(value) {
     this.patientServ.addPatientConsultMotivation(this.patientId, value);
     this.resetFields();
   }
 
+  onSubmitAxies(value) {
+    this.patientServ.addPatientMultiaxisDiagnostic(this.patientId, value);
+    this.resetFields();
+  }
+  onSubmitPhatological(value) {
+    this.patientServ.addPatientPathologicalHistory(this.patientId, value);
+    this.resetFields();
+  }
+  onSubmitNonPhatological(value) {
+    this.patientServ.addPatientNonPathologicalHistory(this.patientId, value);
+    this.resetFields();
+  }
+  onSubmitFamily(value) {
+    this.patientServ.addPatientFamilyDynamic(this.patientId, value);
+    this.resetFields();
+  }
+  onSubmitTreatments(value) {
+    this.patientServ.addPatientPreviousTreatments(this.patientId, value);
+    this.resetFields();
+  }
+  onSubmitMental(value) {
+    this.patientServ.addPatientMentalExam(this.patientId, value);
+    this.resetFields();
+  }
+  onSubmitDevelopment(value) {
+    this.patientServ.addPatientDevelopmentHistory(this.patientId, value);
+    this.resetFields();
+  }
+  onSubmitEvoltion(value) {
+    this.patientServ.addPatientEvolution(this.patientId, value);
+    this.resetFields();
+  }
   onStatus(message, val: boolean) {
     if (val === true) {
       this.toastr.success('Se agregó correctamente la imformación del paciente', 'Éxito');

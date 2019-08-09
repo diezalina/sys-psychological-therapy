@@ -4,7 +4,7 @@
       <ngb-accordion>
     <ngb-panel title="Motivos de Consulta" >
       <ng-template ngbPanelContent style="color: #2F96B4">
-        <form class="create-form" [formGroup]="consultForm" (ngSubmit)="onSubmit(consultForm.value)">
+        <form class="create-form" [formGroup]="consultForm" (ngSubmit)="onSubmitConsultMotivation(consultForm.value)">
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
@@ -83,7 +83,7 @@
       <ngb-accordion>
     <ngb-panel title="Diagnóstico Multiaxial">
       <ng-template ngbPanelContent>
-        <form class="create-form" [formGroup]="multiaxisForm" (ngSubmit)="onSubmit(multiaxisForm.value)">
+        <form class="create-form" [formGroup]="multiaxisForm" (ngSubmit)="onSubmitAxies(multiaxisForm.value)">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -118,7 +118,7 @@
       <ngb-accordion>
     <ngb-panel title="Historial patológico personal" >
       <ng-template ngbPanelContent style="color: #2F96B4">
-        <form class="create-form" [formGroup]="pathologicalForm" (ngSubmit)="onSubmit(pathologicalForm.value)">
+        <form class="create-form" [formGroup]="pathologicalForm" (ngSubmit)="onSubmitPhatological(pathologicalForm.value)">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -189,7 +189,7 @@
       <ngb-accordion>
     <ngb-panel title="Antedecentes personales no patológicos" >
       <ng-template ngbPanelContent style="color: #2F96B4">
-        <form class="create-form" [formGroup]="nonPathologicalForm" (ngSubmit)="onSubmit(nonPathologicalForm.value)">
+        <form class="create-form" [formGroup]="nonPathologicalForm" (ngSubmit)="onSubmitNonPhatological(nonPathologicalForm.value)">
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
@@ -268,7 +268,7 @@
       <ngb-accordion>
     <ngb-panel title="Antecedentes Familiares">
       <ng-template ngbPanelContent>
-        <form class="create-form" [formGroup]="familyForm" (ngSubmit)="onSubmit(familyForm.value)">
+        <form class="create-form" [formGroup]="familyForm" (ngSubmit)="onSubmitFamily(familyForm.value)">
           <div class="row">
             <div class="col-md-6">
               <div class="form-group">
@@ -305,7 +305,7 @@
       <ngb-accordion>
     <ngb-panel title="Tratamientos previos">
       <ng-template ngbPanelContent>
-        <form class="create-form" [formGroup]="treatmentsForm" (ngSubmit)="onSubmit(treatmentsForm.value)">
+        <form class="create-form" [formGroup]="treatmentsForm" (ngSubmit)="onSubmitTreatments(treatmentsForm.value)">
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
@@ -334,7 +334,7 @@
       <ngb-accordion>
     <ngb-panel title="Examen Mental" >
       <ng-template ngbPanelContent style="color: #2F96B4">
-        <form class="create-form" [formGroup]="mentalForm" (ngSubmit)="onSubmit(mentalForm.value)">
+        <form class="create-form" [formGroup]="mentalForm" (ngSubmit)="onSubmitMental(mentalForm.value)">
           <div class="row">
             <div class="col-md-2">
               <div class="form-group">
@@ -447,7 +447,7 @@
       <ngb-accordion>
     <ngb-panel title="Historial de Desarrollo">
       <ng-template ngbPanelContent>
-        <form class="create-form" [formGroup]="developmentForm" (ngSubmit)="onSubmit(developmentForm.value)">
+        <form class="create-form" [formGroup]="developmentForm" (ngSubmit)="onSubmitDevelopment(developmentForm.value)">
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
@@ -476,7 +476,7 @@
       <ngb-accordion>
     <ngb-panel title="Bitácora">
       <ng-template ngbPanelContent>
-        <form class="create-form" [formGroup]="evolutionForm" (ngSubmit)="onSubmit(evolutionForm.value)">
+        <form class="create-form" [formGroup]="evolutionForm" (ngSubmit)="onSubmitEvoltion(evolutionForm.value)">
           <div class="row">
             <div class="col-md-4">
               <div class="form-group">
