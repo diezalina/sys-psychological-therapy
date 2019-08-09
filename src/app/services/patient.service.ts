@@ -43,7 +43,7 @@ export class PatientService {
      * @returns Specific patients consult motivation
      */
     return this.db.collection('patientsConsultMotivation').add({
-      patientId: 'patientUsers/' + id,
+      patientId: this.db.doc('patientUsers/' + this.patientId),
       patientConsultAssistanceMotive: consultMotivationData.consultMotive,
       patientConsultPresentSymptoms: consultMotivationData.consultSymptoms,
       patientConsultCurrentCondition: consultMotivationData.consultCondition,
