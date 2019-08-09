@@ -29,6 +29,10 @@ const routes: Routes = [
     component: InfoPatientComponent
   },
   {
+    path: 'notas',
+    component: NotasComponent
+  },
+  {
     path: '**',
     redirectTo: 'home'
   }
