@@ -44,16 +44,16 @@ export class PatientService {
      */
     return this.db.collection('patientsConsultMotivation').add({
       patientId: id,
-      patientConsultAssistanceMotive: consultMotivationData.assistanceMotive,
-      patientConsultPresentSymptoms: consultMotivationData.presentSymptoms,
-      patientConsultCurrentCondition: consultMotivationData.currentCondition,
-      patientConsultApproximateBeginning: consultMotivationData.approximateBeginning,
-      patientConsultManner: consultMotivationData.manner,
-      patientConsultCharacteristics: consultMotivationData.characteristics,
-      patientConsultUnchainedBy: consultMotivationData.unchainedBy,
-      patientConsultCoincidence: consultMotivationData.coincidence,
-      patientConsultConsequences: consultMotivationData.consequences,
-      patientConsultEvolution: consultMotivationData.evolution,
+      patientConsultAssistanceMotive: consultMotivationData.consultMotive,
+      patientConsultPresentSymptoms: consultMotivationData.consultSymptoms,
+      patientConsultCurrentCondition: consultMotivationData.consultCondition,
+      patientConsultApproximateBeginning: consultMotivationData.consultBeginning,
+      patientConsultManner: consultMotivationData.consultManner,
+      patientConsultCharacteristics: consultMotivationData.consultCharacteristics,
+      patientConsultUnchainedBy: consultMotivationData.consultUnchained,
+      patientConsultCoincidence: consultMotivationData.consultCoincidence,
+      patientConsultConsequences: consultMotivationData.consultConsequences,
+      patientConsultEvolution: consultMotivationData.consultEvolution,
       dateInsert: Date.now()
     });
   }
@@ -82,13 +82,13 @@ export class PatientService {
      */
     return this.db.collection('patientsPathologicalHistory').add({
       patientId: id,
-      patientPreviousIllnesses: pathologicalHistoryData.previousIllnesses,
-      patientBrainTrauma: pathologicalHistoryData.brainTrauma,
-      patientLossOfKnowledgeDate: pathologicalHistoryData.lossOfKnowledgeDate,
-      patientLossOfKnowledgeDesc: pathologicalHistoryData.lossOfKnowledgeDesc,
+      patientPreviousIllnesses: pathologicalHistoryData.illnesses,
+      patientBrainTrauma: pathologicalHistoryData.brain,
+      patientLossOfKnowledgeDate: pathologicalHistoryData.knowledgeDate,
+      patientLossOfKnowledgeDesc: pathologicalHistoryData.knowledgeDesc,
       patientSeizures: pathologicalHistoryData.seizures,
-      patientSeizuresCharacteristics: pathologicalHistoryData.seizuresCharacteristics,
-      patientSubstanceUse: pathologicalHistoryData.substanceUse,
+      patientSeizuresCharacteristics: pathologicalHistoryData.seizuresDesc,
+      patientSubstanceUse: pathologicalHistoryData.substance,
       patientAccidents: pathologicalHistoryData.accidents,
       patientSurgeries: pathologicalHistoryData.surgeries,
       dateInsert: Date.now()
@@ -105,15 +105,15 @@ export class PatientService {
       patientId: id,
       // tslint:disable-next-line:radix
       patientNourishment: parseInt(nonPathologicalHistoryData.nourishment),
-      patientFamilyPerformance: nonPathologicalHistoryData.familyPerformance,
-      patientSocialPerformance: nonPathologicalHistoryData.socialPerformance,
-      patientUsualMood: nonPathologicalHistoryData.usualMood,
-      patientUsualStressLevels: nonPathologicalHistoryData.usualStressLevels,
+      patientFamilyPerformance: nonPathologicalHistoryData.family,
+      patientSocialPerformance: nonPathologicalHistoryData.social,
+      patientUsualMood: nonPathologicalHistoryData.mood,
+      patientUsualStressLevels: nonPathologicalHistoryData.stress,
       patientHygiene: nonPathologicalHistoryData.hygiene,
       // tslint:disable-next-line:radix
-      patientLifeType: parseInt(nonPathologicalHistoryData.lifeType),
-      patientSleepingHabits: nonPathologicalHistoryData.sleepingHabits,
-      patientFreeTimeManagement: nonPathologicalHistoryData.freetimeManagement,
+      patientLifeType: parseInt(nonPathologicalHistoryData.life),
+      patientSleepingHabits: nonPathologicalHistoryData.sleeping,
+      patientFreeTimeManagement: nonPathologicalHistoryData.time,
       dateInsert: Date.now()
     });
   }
@@ -126,10 +126,10 @@ export class PatientService {
      */
     return this.db.collection('patientsFamilyHistory').add({
       patientId: id,
-      patientRelativeBehaviorDisorder: familyHistoryData.relativeBehaviorDisorder,
-      patientRelativeBDRelation: familyHistoryData.relativeBDRelation,
-      patientRelativeChronicConditions: familyHistoryData.relativeChronicConditions,
-      patientRelativeCCRelation: familyHistoryData.relativeCCRelation,
+      patientRelativeBehaviorDisorder: familyHistoryData.disorder,
+      patientRelativeBDRelation: familyHistoryData.disorderRelation,
+      patientRelativeChronicConditions: familyHistoryData.chronic,
+      patientRelativeCCRelation: familyHistoryData.chronicRelation,
       dateInsert: Date.now()
     });
   }
@@ -143,7 +143,7 @@ export class PatientService {
     return this.db.collection('patientsPreviousTreatments').add({
       patientId: id,
       patientPrescriptions: previousTreatmentsData.prescriptions,
-      patientPrescriptionReaction: previousTreatmentsData.prescriptionReaction,
+      patientPrescriptionReaction: previousTreatmentsData.reaction,
       patientSelfmedication: previousTreatmentsData.selfmedication,
       dateInsert: Date.now()
     });
@@ -157,8 +157,8 @@ export class PatientService {
      */
     return this.db.collection('patientsEvolution').add({
       patientId: id,
-      patientSessionDate: evolutionData.sessionDate,
-      patientSessionBitacora: evolutionData.sessionBitacora,
+      patientSessionDate: evolutionData.date,
+      patientSessionBitacora: evolutionData.bitacora,
       dateInsert: Date.now()
     });
   }
@@ -172,18 +172,18 @@ export class PatientService {
     return this.db.collection('patientsMentalExam').add({
       patientId: id,
       patientAppearance: mentalExamData.appearance,
-      patientDisposition: mentalExamData.disposition,
-      patientMotorBehavior: mentalExamData.motorBehavior,
+      patientDisposition: mentalExamData.dispotition,
+      patientMotorBehavior: mentalExamData.motor,
       patientMotion: mentalExamData.motion,
       patientGreeting: mentalExamData.greeting,
       patientVisualContact: mentalExamData.visualContact,
-      patientDressStyle: mentalExamData.dressStyle,
-      patientDressStyleCharacteristics: mentalExamData.dressStyleCharacteristics,
+      patientDressStyle: mentalExamData.dress,
+      patientDressStyleCharacteristics: mentalExamData.dressDesc,
       patientAccessories: mentalExamData.accessories,
       patientFacies: mentalExamData.facies,
       patientLanguage: mentalExamData.language,
-      patientTimeSpaceOrientation: mentalExamData.timeSpaceOrientation,
-      patientSenperceptualAlteration: mentalExamData.senperceptualAlteration,
+      patientTimeSpaceOrientation: mentalExamData.orientation,
+      patientSenperceptualAlteration: mentalExamData.senperceptual,
       patientCoordination: mentalExamData.coordination,
       dateInsert: Date.now()
     });
@@ -199,7 +199,7 @@ export class PatientService {
       patientId: id,
       patientPregnancy: devHistoryData.pregnancy,
       patientChildbirth: devHistoryData.childbirth,
-      patientWorkHistory: devHistoryData.workHistory,
+      patientWorkHistory: devHistoryData.work,
       dateInsert: Date.now()
     });
   }

@@ -273,6 +273,7 @@ export class InfoPatientComponent implements OnInit {
       consultCoincidence: ['', Validators.required],
       consultConsequences: ['', Validators.required],
       consultEvolution: ['', Validators.required],
+      dateInsert: ['', Validators.required]
     });
     this.multiaxisForm = this.fb.group({
       id: ['', Validators.required],
@@ -280,6 +281,7 @@ export class InfoPatientComponent implements OnInit {
       axisTwo: ['', Validators.required],
       axisThree: ['', Validators.required],
       axisFour: ['', Validators.required],
+      dateInsert: ['', Validators.required]
     });
     this.pathologicalForm = this.fb.group({
       id: ['', Validators.required],
@@ -292,6 +294,7 @@ export class InfoPatientComponent implements OnInit {
       substance: ['', Validators.required],
       accidents: ['', Validators.required],
       surgeries: ['', Validators.required],
+      dateInsert: ['', Validators.required]
     });
     this.nonPathologicalForm = this.fb.group({
       id: ['', Validators.required],
@@ -314,7 +317,7 @@ export class InfoPatientComponent implements OnInit {
     });
     this.treatmentsForm = this.fb.group({
       id: ['', Validators.required],
-      prenscriptions: ['', Validators.required],
+      prescriptions: ['', Validators.required],
       reaction: ['', Validators.required],
       selfmedication: ['', Validators.required],
     });
