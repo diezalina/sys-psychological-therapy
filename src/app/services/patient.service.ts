@@ -9,7 +9,7 @@ import {AngularFireList} from '@angular/fire/database';
 export class PatientService {
 
   patientId = new BehaviorSubject<string>('');
-  constructor(public db: AngularFirestore, public afDoc: AngularFirestoreDocument) { }
+  constructor(public db: AngularFirestore) { }
 
   getPatients() {
     /**
@@ -44,7 +44,7 @@ export class PatientService {
      * @returns Specific patients consult motivation
      */
     return this.db.collection('patientsConsultMotivation').add({
-      patientId: this.db.collection('patientUsers', ref => ref.where('id', '==', id)),
+      patientId: this.db.collection('patientUsers').doc(id),
       patientConsultAssistanceMotive: consultMotivationData.consultMotive,
       patientConsultPresentSymptoms: consultMotivationData.consultSymptoms,
       patientConsultCurrentCondition: consultMotivationData.consultCondition,

@@ -51,6 +51,7 @@ import {PatientModule} from './patient/patient.module';
     PsychologistModule,
     PatientModule,
     ComponentsModule,
+    PatientModule,
     FlatpickrModule.forRoot()
   ],
   providers: [FlatpickrDefaults],
