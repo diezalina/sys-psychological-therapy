@@ -88,9 +88,9 @@ export class AuthService {
       // tslint:disable-next-line:radix
       patientAge: parseInt(this.patientUsr.age),
       // tslint:disable-next-line:radix
-      patientSex: parseInt(this.patientUsr.sex),
+      patientSex: parseInt(this.patientUsr.sexo),
       // tslint:disable-next-line:radix
-      civilState: parseInt(this.patientUsr.civilState),
+      civilState: parseInt(this.patientUsr.civil),
       patientBirthdate: this.patientUsr.birthdate,
       patientHometown: this.patientUsr.hometown,
       patientAddress: this.patientUsr.address,
@@ -98,12 +98,12 @@ export class AuthService {
       patientCellphone: this.patientUsr.cellphone,
       patientOccupation: this.patientUsr.occupation,
       patientScholarity: this.patientUsr.scholarity,
-      patientSEStatus: this.patientUsr.SEStatus, // Patient socioeconomic status
+      patientSEStatus: this.patientUsr.se, // Patient socioeconomic status
       patientReligion: this.patientUsr.religion,
       patientReference: this.patientUsr.reference,
-      patientLegalGuardian: this.patientUsr.legalGuardian,
-      patientInfoSource: this.patientUsr.infoSource,
-      patientDescriptiveDiagnostic: this.patientUsr.descriptiveDiagnostic,
+      patientLegalGuardian: this.patientUsr.guardian,
+      patientInfoSource: this.patientUsr.source,
+      patientDescriptiveDiagnostic: this.patientUsr.diagnostic,
       patientPronostic: this.patientUsr.pronostic
     });
   }

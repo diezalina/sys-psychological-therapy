@@ -97,7 +97,7 @@ export class AddPatientComponent implements OnInit {
       address: ['', Validators.required],
       homephone: ['', Validators.required],
       cellphone: ['', Validators.required],
-      ocupation: ['', Validators.required],
+      occupation: ['', Validators.required],
       scholarity: ['', Validators.required],
       se: ['', Validators.required],
       religion: ['', Validators.required],
