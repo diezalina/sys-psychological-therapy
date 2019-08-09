@@ -14,6 +14,8 @@ export class AuthService {
   patientUsr: any;
   private eventAuthError = new BehaviorSubject<string>('');
   eventAuthError$ = this.eventAuthError.asObservable();
+  private eventAuthErrorP = new BehaviorSubject<string>('');
+  eventAuthErrorP$ = this.eventAuthErrorP.asObservable();
   private value: boolean;
   private patientId = new BehaviorSubject<string>('');
   patientId$ = this.patientId.asObservable();
@@ -31,7 +33,7 @@ export class AuthService {
         });
         this.insertAdminUsr(usrCredential)
           .then(() => {
-            this.router.navigate(['/users']);
+            this.router.navigate(['/patient']);
           });
       })
       .then(res => {
@@ -44,21 +46,22 @@ export class AuthService {
 
   createPatientUser(user) {
     return this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.pwd)
-      .then(patientCredential => {
+      .then(usrCredential => {
         this.patientUsr = user;
-        patientCredential.user.updateProfile({
+        usrCredential.user.updateProfile({
           displayName: user.name
         });
-        this.insertPatient(patientCredential)
+        this.insertPatient(usrCredential)
           .then(() => {
-            this.patientId.next(patientCredential.user.uid);
+            this.patientId.next(usrCredential.user.uid);
           });
       })
       .then(res => {
         return true;
       })
       .catch(err => {
-        this.eventAuthError.next(err);
+        console.log(err);
+        this.eventAuthErrorP.next(err);
       });
   }
 
