@@ -16,9 +16,7 @@ export class AuthService {
   eventAuthError$ = this.eventAuthError.asObservable();
   private eventAuthErrorP = new BehaviorSubject<string>('');
   eventAuthErrorP$ = this.eventAuthErrorP.asObservable();
-  private value: boolean;
-  private patientId = new BehaviorSubject<string>('');
-  patientId$ = this.patientId.asObservable();
+  patientId: string;
 
   constructor(private db: AngularFirestore,
               private afAuth: AngularFireAuth,
@@ -33,7 +31,7 @@ export class AuthService {
         });
         this.insertAdminUsr(usrCredential)
           .then(() => {
-            this.router.navigate(['/patient']);
+            this.router.navigate(['/users']);
           });
       })
       .then(res => {
@@ -51,9 +49,10 @@ export class AuthService {
         usrCredential.user.updateProfile({
           displayName: user.name
         });
+        this.patientId = usrCredential.user.uid;
         this.insertPatient(usrCredential)
           .then(() => {
-            this.patientId.next(usrCredential.user.uid);
+            // this.patientId = usrCredential.user.uid;
           });
       })
       .then(res => {

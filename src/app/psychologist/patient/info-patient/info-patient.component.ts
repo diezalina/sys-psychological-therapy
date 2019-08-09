@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../../../services/auth.service';
 import {BehaviorSubject} from 'rxjs';
+import {PatientService} from '../../../services/patient.service';
 
 @Component({
   selector: 'app-info-patient',
@@ -22,7 +23,7 @@ export class InfoPatientComponent implements OnInit {
   developmentForm: FormGroup;
   eventForm: FormGroup;
   familyDynamicForm: FormGroup;
-  patientId: any;
+  patientId: string;
 
 // consultForm opciones
   consultMotives = [
@@ -249,11 +250,12 @@ export class InfoPatientComponent implements OnInit {
   constructor(private authServ: AuthService,
               private fb: FormBuilder,
               private router: Router,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private patientServ: PatientService) { }
 
   ngOnInit() {
-    this.authServ.patientId$.subscribe(res => {
-      this.patientId = res;
+    this.patientServ.patientId.subscribe(res => {
+      this.patientId = this.patientServ.patientId.getValue();
     });
     console.log(this.patientId);
     this.createForm();

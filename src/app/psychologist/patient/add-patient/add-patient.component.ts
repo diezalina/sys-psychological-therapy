@@ -3,6 +3,7 @@ import {FormBuilder,  FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AuthService} from '../../../services/auth.service';
+import {PatientService} from '../../../services/patient.service';
 
 
 @Component({
@@ -14,6 +15,7 @@ export class AddPatientComponent implements OnInit {
 
   patientForm: FormGroup;
   authError: any;
+  patientId: string;
   sexos = [
     {
       val: 1,
@@ -74,7 +76,8 @@ export class AddPatientComponent implements OnInit {
   constructor(private authServ: AuthService,
               private fb: FormBuilder,
               private router: Router,
-              private toastr: ToastrService) { }
+              private toastr: ToastrService,
+              private patientServ: PatientService) { }
 
   ngOnInit() {
     this.authServ.eventAuthErrorP$.subscribe(data => {
@@ -136,8 +139,9 @@ export class AddPatientComponent implements OnInit {
   onSubmit(value) {
     this.authServ.createPatientUser(value).then(res => {
       if (res === true) {
+        this.patientId = this.authServ.patientId;
+        this.patientServ.patientId.next(this.patientId);
         this.onStatus('', res);
-        this.router.navigate(['users']);
       } else {
         this.onStatus(this.authError.message, false);
       }

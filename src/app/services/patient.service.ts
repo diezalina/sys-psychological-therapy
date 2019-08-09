@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {BehaviorSubject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PatientService {
 
+  patientId = new BehaviorSubject<string>('');
   constructor(public db: AngularFirestore) { }
 
   getPatients() {
