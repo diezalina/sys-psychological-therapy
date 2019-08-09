@@ -10,6 +10,7 @@ import { PatientComponent } from './patient/patient/patient.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { InfoPatientComponent } from './patient/info-patient/info-patient.component';
 import {AddPatientComponent} from './patient/add-patient/add-patient.component';
+import {MatInputModule} from '@angular/material';
 
 @NgModule(
   {declarations: [
@@ -22,6 +23,7 @@ import {AddPatientComponent} from './patient/add-patient/add-patient.component';
     AddPatientComponent],
   imports: [
     CommonModule,
+    MatInputModule,
     ReactiveFormsModule,
     RouterModule,
     NgbModule
