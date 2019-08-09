@@ -24,6 +24,7 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import { LoginComponent } from './auth/login/login.component';
 import {PatientComponent} from './psychologist/patient/patient/patient.component';
 import {NotasComponent} from './patient/notas/notas.component';
+import {PatientModule} from './patient/patient.module';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import {NotasComponent} from './patient/notas/notas.component';
     NgbModule,
     PsychologistModule,
     ComponentsModule,
+    PatientModule,
     FlatpickrModule.forRoot()
   ],
   providers: [FlatpickrDefaults],
