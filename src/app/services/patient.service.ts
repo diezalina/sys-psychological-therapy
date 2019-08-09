@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {AngularFirestore} from '@angular/fire/firestore';
+import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestore';
 import {BehaviorSubject} from 'rxjs';
+import {AngularFireList} from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ import {BehaviorSubject} from 'rxjs';
 export class PatientService {
 
   patientId = new BehaviorSubject<string>('');
-  constructor(public db: AngularFirestore) { }
+  constructor(public db: AngularFirestore, public afDoc: AngularFirestoreDocument) { }
 
   getPatients() {
     /**
@@ -43,7 +44,7 @@ export class PatientService {
      * @returns Specific patients consult motivation
      */
     return this.db.collection('patientsConsultMotivation').add({
-      patientId: this.db.doc('patientUsers/' + this.patientId),
+      patientId: this.db.collection('patientUsers', ref => ref.where('id', '==', id)),
       patientConsultAssistanceMotive: consultMotivationData.consultMotive,
       patientConsultPresentSymptoms: consultMotivationData.consultSymptoms,
       patientConsultCurrentCondition: consultMotivationData.consultCondition,
