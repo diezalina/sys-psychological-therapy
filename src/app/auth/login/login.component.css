@@ -1,7 +1,8 @@
 #card {
-  width: 45%;
+  width: 40%;
   background: #A2C4DD;
   margin: 5%;
+  margin-top: 11%;
   margin-left: 25%;
 }
 
@@ -11,7 +12,9 @@
 
 #circulo{
   position: absolute;
-  margin-right: 45%;
+  margin-left: 40%;
+  margin-top: 2%;
+  z-index: 3;
   width: 150px;
   height: 150px;
   -moz-border-radius: 50%;
@@ -19,4 +22,10 @@
   border-radius: 50%;
   background: #5cb85c;
   flex: auto;
+}
+
+#img{
+  width: 100px;
+  margin: 8%;
+  margin-top: 10%;
 }
